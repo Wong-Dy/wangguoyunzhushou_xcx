@@ -1,0 +1,36 @@
+/* pages/recharge/recharge.wxss */
+
+page {
+  height: 100%;
+  background-color: #ececec;
+}
+
+.top-text-view {
+  background-color: white;
+  margin-top: 10px;
+  padding: 10px 15px;
+}
+
+.top-text-view text{
+  font-size: 14px;
+  color:darkgray;
+}
+
+.previewimg {
+  background-color: white;
+  width: 100%;
+  margin-bottom: 20px;
+  padding-top: 10px;
+}
+
+.sq-image {
+  display: block;
+  width: 100%;
+}
+
+.wx-text,.ali-text{
+  display:block;
+  font-size: 14px;
+  color:crimson;
+  margin: 10px 15px;
+}

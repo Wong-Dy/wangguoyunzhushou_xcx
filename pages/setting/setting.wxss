@@ -1,0 +1,41 @@
+/* pages/setting/setting.wxss */
+
+page {
+  height: 100%;
+  background-color: #F8F8F8;
+}
+
+.form {
+  padding: 10px 0px;
+}
+
+.list-item {
+  background-color: white;
+  padding-left: 15px; 
+}
+
+.list-item-group {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  border-bottom: 1px solid #F4F4F4;
+  padding: 10px 15px 10px 0px;
+}
+
+.list-item .list-item-text {
+  width: 30%;
+  font-size: 16px;
+}
+
+.list-item .item-input {
+  flex:1;
+  font-size: 15px;
+}
+
+.list-last-item {
+  margin-top: 10px;
+}
+
+.item-last-text{
+  margin: 10px 15px;
+}

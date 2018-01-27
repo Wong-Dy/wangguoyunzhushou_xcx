@@ -1,0 +1,31 @@
+<view class="">
+  <view class="list-item">
+    <text class="item-text">会员账户</text>
+    <text class="item-phone-text">17701343918</text>
+  </view>
+  <view class="person-line"></view>
+  <view class="list-item" bindtap="nickname" >
+    <text class="item-text">修改昵称</text>
+    <image class="item-nickname-image" src="../../dist/images/ic_arrow_right1.png"></image>
+  </view>
+  <view class="person-line"></view>
+  <view class="list-item" bindtap="music" >
+     <text class="item-text">背景音乐设置</text>
+     <image class="item-music-image" src="../../dist/images/ic_arrow_right1.png"></image>
+  </view>
+  <view class="person-line"></view>
+  <view class="list-item" bindtap="loginPassword" >
+     <text class="item-text">登录密码设置</text>
+     <image class="item-login-image" src="../../dist/images/ic_arrow_right1.png"></image>
+  </view>
+  <view class="person-line"></view>
+  <view class="list-item" bindtap="payPassword">
+    <text class="item-text">支付密码设置</text>
+    <image class="item-pay-image" src="../../dist/images/ic_arrow_right1.png"></image>
+  </view>
+  <view class="person-line"></view>
+  <view></view><view></view>
+  <view class="list-last-item">
+    <button class="item-last-text">退出登录</button>
+  </view>
+</view>

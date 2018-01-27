@@ -1,0 +1,20 @@
+<view class="container">
+  <view class='top-text-view'>
+    <text>感谢大家支持！语音通知需要成本费.
+          费用规则：0.2元=1条语音通知.
+          因小程序是个人版,所以只能劳烦大家通过转账了 ^_^.
+          注！！！请大家转账时务必备注自己的助手ID号,否则不知道哪位充值的
+    </text>
+  </view>
+
+  <view wx:for="{{imgalist}}" wx:for-item="image" wx:for-index="index" class="previewimg">
+    <image src="{{image}}" class='sq-image' mode='widthFix' data-src="{{image}}" bindtap="previewImage"></image>
+    <block wx:if="{{index == 0}}">
+      <text class='wx-text'>点击图片长按保存或截图,用微信扫一扫选择相册保存的图片</text>
+    </block>
+    <block wx:else>
+      <text class='ali-text'>点击图片长按保存或截图,用支付宝扫一扫选择相册保存的图片</text>
+    </block>
+  </view>
+
+</view>

@@ -1,0 +1,70 @@
+<!--pages/index/index.wxml-->
+<view wx:if="{{isPhone == false}}" class="container">
+    <view class="userinfo">
+      <view class="userinfo-set-img">
+         <image bindtap="start" class="userinfo-img" src="../../dist/images/me_set.png"></image>
+      </view>
+      <view class="userinfo-image">
+        <image class="userinfo-avatar" src="../../dist/images/login_bg.png" background-size="cover"></image>
+        <text class="userinfo-nickname">吾道</text>
+      </view>
+    </view>  
+    <view class="separate"></view>
+    <view class="navs">
+       <view class="nav-item" catchtap="toOrder">
+          <image src="" class="nav-image" />
+          <text>账号余额</text>
+        </view>
+        <view class="nav-item" catchtap="paycheck">
+          <image src="../../dist/images/Recharge_7.png" class="nav-image" />
+          <text>充值</text>
+        </view>
+        <view class="nav-item" catchtap="record">
+          <image src="../../dist/images/Recharge_8.png" class="nav-image" />
+          <text>充值明细</text>
+        </view>
+    </view> 
+    <view class="separate"></view>
+    <view class="person-list">
+        <view class="person-line-radio"></view>
+        <view class="list-item" bindtap="faceverification">
+          <image class="item-image" src="../../dist/images/phone.png"></image>
+          <text class="item-text">绑定手机</text>
+          <image  class="item-last-image" src="../../dist/images/ic_arrow_right1.png"></image>
+        </view>
+        <view class="person-line"></view>
+        <view class="list-item" bindtap="renlain">
+          <image class="item-image" src="../../dist/images/9-face.png"></image>
+          <text class="item-text">人脸验证</text>
+          <image  class="item-last-image" src="../../dist/images/ic_arrow_right1.png"></image>
+        </view>
+        <view class="person-line"></view>
+        <view class="list-item" bindtap="payment">
+          <image class="item-image" src="../../dist/images/no_sign_10.png"></image>
+          <text class="item-text">免密支付</text>
+          <image class="item-last-image" src="../../dist/images/ic_arrow_right1.png"></image>
+        </view>
+        <view class="person-line"></view>
+        <view class="list-item">
+          <image class="item-image" src="../../dist/images/Coupon_11.png"></image>
+          <text class="item-text">优惠卷</text>
+          <image class="item-last-image-radio" src="../../dist/images/ic_arrow_right1.png"></image>
+        </view>
+        <view class="person-line-radio"></view>
+        <view class="list-item" bindtap="profile">
+          <image class="item-image" src="../../dist/images/about.png"></image>
+          <text class="item-text">关于我们</text>
+          <image class="item-last-image" src="../../dist/images/ic_arrow_right1.png"></image>
+        </view>
+        <view class="person-line"></view>
+        <view class="list-item" bindtap="feedback" >
+          <image class="item-image" src="../../dist/images/feedback.png"></image>
+          <text class="item-text">意见反馈</text>
+          <image class="item-last-image" src="../../dist/images/ic_arrow_right1.png"></image>
+        </view>
+        <view class="person-line"></view>
+      </view>
+</view>
+ <view wx:elif="{{isPhone==true}}">
+    
+</view> 

@@ -1,0 +1,14 @@
+<!--pages/feedback/feedback.wxml-->
+<view>
+  <form bindsubmit="formSubmit">
+
+    <view class="list-item">
+      <!-- <input class="item-input" type="text" name="feedback" placeholder="你的意见是我们前进的动力"/> -->
+      <textarea name="feedback" maxlength="500" class="item-input" placeholder="提出您的宝贵意见,需要增加哪些常用通知,或是改善需求~" />
+    </view>
+
+    <view class="list-last-item">
+      <button class="item-last-button" form-type="submit">提交</button>
+    </view>
+  </form>
+</view>

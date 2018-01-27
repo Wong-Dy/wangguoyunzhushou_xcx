@@ -1,0 +1,24 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/web/advertisement/advertisement",
+    "pages/mine/mine",
+    "pages/mineset/mineset",
+    "pages/feedback/feedback",
+    "pages/faceverification/faceverification",
+    "pages/recharge/recharge",
+    "pages/setting/setting"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "王国纪元云助手",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

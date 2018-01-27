@@ -1,0 +1,47 @@
+<!--index.wxml-->
+<view class="container">
+  <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="width: {{slideimagewidth}}px; height: {{slideimageheight}}px;">
+    <block wx:for="{{bannerList}}" wx:key="index">
+      <swiper-item bindtap="swiperTap" data-type="{{item.type}}" data-link="{{item.link}}">
+        <image src="{{item.imgUrl}}" class="slide-image" style="width: {{slideimagewidth}}px; height: {{slideimageheight}}px;" bindload="imageAutoScaleLoad"/>
+      </swiper-item>
+    </block>
+  </swiper>
+
+
+  <view class='timeview' style='background-color: {{bgcolor}}'>
+    <view class='line-default'></view>
+
+    <view class='current-time-view'>
+      <image src='../../dist/images/current_time.png' mode='widthFix' style='width:22px'></image>
+      <text class='current-time'>{{currentTime}}</text>
+    </view>
+
+    <view class='count-down-view'>
+      <image src='../../dist/images/count_down.png' mode='widthFix' style='width:45px'></image>
+      <text class='count-down'>{{countDown}}</text>
+    </view>
+    <view class='last-time-view'>
+      <image src='../../dist/images/last_time.png' mode='widthFix' style='width:22px'></image>
+      <text class='last-time'>{{lastTime}}</text>
+    </view>
+
+    <view class='line-default'></view>
+  </view>
+
+  <view class='menuview' style='background-color: {{bgcolor}}'>
+    <block wx:for-items="{{menuList}}" wx:key="index">
+      <view class="menubtn-view" bindtap="menuTap" data-hour="{{item.hour}}">
+        <button class="menu-button {{lastHour==item.hour?'menu-button-active':'menu-button-default'}}">{{item.name}}</button>
+      </view>
+    </block>
+  </view>
+
+  <view class='settingview' style='background-color: {{bgcolor}}'>
+    <button class='cancel' type="warn" bindtap="cancelTap">取消通知</button>
+    <button class='setting' bindtap="settingTap">设置</button>
+
+  </view>
+
+
+</view>

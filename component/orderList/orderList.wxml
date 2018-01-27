@@ -1,0 +1,27 @@
+<template name="orderList">
+  <block wx:if="{{orderList.length > 0}}">
+    <view class="order">
+      <block wx:for="{{orderList}}" wx:for-index="orderIndex" wx:for-item="orderItem" wx:key="order">
+        <view data-id="{{orderItem.id}}" class="order-item" catchtap="vieworderDetail">
+          <view class="order-info">
+            <image src="../../dist/images/order_shop.png" class="order-info-img"></image>
+            <view class="order-intro">
+              <view class="order-title">{{orderItem.payDesc}}</view>
+              <view class="order-status">{{orderItem.statusDesc}}</view>
+            </view>
+            <view class="order-intro-right">
+              <view class="order-time">{{orderItem.createTime}}</view>
+              <view class="order-price">￥{{orderItem.amount}}</view>
+            </view>
+          </view>
+
+        </view>
+
+      </block>
+    </view>
+  </block>
+  <view class='view-bottom'>
+    <import src="../../component/loading/more/more.wxml" />
+    <template is="loadingMore" data="{{hasMore: hasMore}}" />
+  </view>
+</template>

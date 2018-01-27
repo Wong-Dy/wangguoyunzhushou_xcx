@@ -1,0 +1,13 @@
+<template name="loadingMore">
+  <view class="">
+    <block wx:if="{{hasMore}}">
+      <view class="loading-more-tip">
+        <view class="weui-loading">
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="loading-more-tip"></view>
+    </block>
+  </view>
+</template>

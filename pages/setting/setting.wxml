@@ -1,0 +1,24 @@
+<!--pages/setting/setting.wxml-->
+<view class="container">
+  <form class='form' bindsubmit="formSubmit">
+    <view class="list-item">
+      <view class='list-item-group'>
+        <text class="list-item-text">手机号</text>
+        <input name="mobile" class="item-input" placeholder="请输入接收通知的手机号码" value='{{phone}}'/>
+      </view>
+    </view>
+    <view class="list-item">
+      <view class='list-item-group'>
+        <text class="list-item-text">提前通知</text>
+        <input name="ddAheadNotice" class="item-input" placeholder="提前多少分钟通知,默认10分钟" value='{{ddAheadNotice}}'/>
+      </view>
+    </view>
+
+    <view class="list-last-item">
+      <button formType="submit" type='primary' class="item-last-text">提交</button>
+      <button  type='primary' class="item-last-text" bindtap='rechargeTap'>充值 余额:{{userMoney}}</button>
+      <button type='warn' class="item-last-text" bindtap='feedbackTap'>我有宝贵建议</button>
+    </view>
+  </form>
+
+</view>
