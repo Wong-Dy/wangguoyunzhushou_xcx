@@ -1,0 +1,58 @@
+/* pages/setting/setting.wxss */
+
+page {
+  height: 100%;
+  background-color: #F8F8F8;
+}
+
+.title-tiqian{
+  margin-top: 10px;
+  padding: 10px 15px; 
+  font-size: 15px;
+  color: darkgray;
+}
+
+.list-item {
+  background-color: white;
+  padding-left: 15px; 
+}
+
+.list-item-group {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  border-bottom: 1px solid #F4F4F4;
+  padding: 10px 15px 10px 0px;
+}
+
+.list-item-group-last {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  padding: 10px 15px 10px 0px;
+}
+
+.list-item .list-item-text {
+  width: 30%;
+  font-size: 16px;
+}
+
+.list-item .item-input {
+  flex:1;
+  font-size: 15px;
+}
+
+.list-last-item {
+  margin-top: 20px;
+}
+
+.submit-btn{
+  color:white;
+  background-color: deepskyblue;
+  margin: 0px 15px;
+}
+
+.submit-btn:active{
+  background-color: dodgerblue;
+  
+}

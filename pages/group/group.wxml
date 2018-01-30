@@ -1,0 +1,42 @@
+<view class='content'>
+
+  <block wx:if='{{dataList.length > 0}}'>
+    <view class='scroll-view'>
+      <view class='list-box'>
+        <block wx:for="{{dataList}}" wx:for-index="index" wx:for-item="item" wx:key="order">
+          <view class="{{dataList.length == index+1 ? 'list-item-last' : 'list-item'}}">
+            <view class='item-left'>
+              <image src='../../dist/images/head.png' style='width:40px' mode='widthFix'></image>
+              <view class='item-left-info'>
+                <text class='top1'>{{item.aa}}</text>
+                <text class='top2'>1232131233</text>
+              </view>
+            </view>
+            <view class='item-right'>
+              <text class='top1'>12sad3</text>
+            </view>
+          </view>
+        </block>
+      </view>
+
+      <view class='view-bottom'>
+        <import src="../../component/loading/more/more.wxml" />
+        <template is="loadingMore" data="{{hasMore: hasMore}}" />
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="not-data-view">
+      <view class='botton-group'>
+        <button class='create'>创建</button>
+        <button class='join'>加入</button>
+      </view>
+      <view class='text-group'>
+        <text class='remark'>联盟 hr 建议创建操作，然后分享给成员加入</text>
+      </view>
+    </view>
+  </block>
+
+
+
+</view>

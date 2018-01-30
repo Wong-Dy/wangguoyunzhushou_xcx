@@ -1,0 +1,33 @@
+<view class="scroll-view">
+  <block wx:for="{{orderList}}" wx:for-index="orderIndex" wx:for-item="orderItem" wx:key="order">
+    <view class='list-item'>
+      <view class="list-view-left">
+        <text class="list-text-first">{{orderItem.userNote}}</text>
+        <text wx:if="{{orderItem.isPaid == 0}}" class="list-text-last">未付款</text>
+        <text wx:if="{{orderItem.isPaid == 1}}" class="list-text-last">充值成功</text>
+      </view>
+      <view class="list-view-right">
+        <text class="list-text-first1">{{orderItem.addTime}}</text>
+        <text class="list-text-last1">￥{{orderItem.amount}}</text>
+      </view>
+    </view>
+    <view class="person-line"></view>
+  </block>
+
+  <view class='view-bottom'>
+    <import src="../../../component/loading/more/more.wxml" />
+    <template is="loadingMore" data="{{hasMore: hasMore}}" />
+  </view>
+</view>
+
+
+
+<block wx:if="{{!hasData}}">
+  <view class="not-data-tip">
+    <image src="../../../dist/images/order_no_data.png" mode='widthFix' style='width:380rpx' />
+    <text class='not-data-tip-text'>主人，你还没有充值记录哦~</text>
+  </view>
+</block>
+<block wx:else>
+  <view class="not-data-tip"></view>
+</block>

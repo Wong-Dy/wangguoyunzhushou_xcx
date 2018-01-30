@@ -3,7 +3,7 @@
   <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="width: {{slideimagewidth}}px; height: {{slideimageheight}}px;">
     <block wx:for="{{bannerList}}" wx:key="index">
       <swiper-item bindtap="swiperTap" data-type="{{item.type}}" data-link="{{item.link}}">
-        <image src="{{item.imgUrl}}" class="slide-image" style="width: {{slideimagewidth}}px; height: {{slideimageheight}}px;" bindload="imageAutoScaleLoad"/>
+        <image src="{{item.imgUrl}}" class="slide-image" style="width: {{slideimagewidth}}px; height: {{slideimageheight}}px;" bindload="imageAutoScaleLoad" />
       </swiper-item>
     </block>
   </swiper>
@@ -39,7 +39,6 @@
 
   <view class='settingview' style='background-color: {{bgcolor}}'>
     <button class='cancel' type="warn" bindtap="cancelTap">取消通知</button>
-    <button class='setting' bindtap="settingTap">设置</button>
 
   </view>
 

@@ -1,0 +1,41 @@
+
+page {
+  background-color: #f8f8f8;
+  width: 100%;
+}
+
+.content-box {
+  padding: 10px 15px;
+}
+
+.person-line-radio {
+  width: 100%;
+  height: 15rpx;
+  background-color: #f0f0f0;
+}
+
+.person-line {
+  height: 4rpx;
+  background-color: #f0f0f0;
+}
+
+.list-title {
+  text-align: center;
+  height: 60rpx;
+  margin-top: 10px;
+}
+
+.list-title text {
+  font-size: 32rpx;
+}
+
+.list-content text {
+  display: flex;
+  font-size: 28rpx;
+}
+
+.list-view text {
+  width: 100%;
+  display: flex;
+  font-size: 15px;
+}

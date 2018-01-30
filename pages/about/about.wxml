@@ -1,0 +1,24 @@
+<view class="content-box">
+  <view class="list-title">
+    <text>{{title}}</text>
+  </view>
+
+  <view class="list-content" style='text-indent: 50rpx;'>
+    <text>{{content}}</text>
+  </view>
+  <view class="list-content" style='margin-top:20px;text-indent: 50rpx;'>
+    <text>{{desc}}</text>
+  </view>
+  <view class="list-view" style='margin-top:30px'>
+    <text>{{wx}}</text>
+  </view>
+  <view class="list-view">
+    <text>{{phone}}</text>
+  </view>
+  <view class="list-view">
+    <text>{{tel}}</text>
+  </view>
+  <view class="list-view">
+    <text>{{email}}</text>
+  </view>
+</view>

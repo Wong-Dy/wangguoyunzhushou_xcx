@@ -1,4 +1,3 @@
-// pages/faceverification/faceverification.js
 const app = getApp()
 
 var message = app.message

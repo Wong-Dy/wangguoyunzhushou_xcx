@@ -133,11 +133,20 @@ function sendAuthCode(phone, cb) {
 }
 
 function bindPhone(code, phone, cb) {
-
   var json = JSON.stringify({
     cmd: "bindPhone",
     code: code,
     phone: phone
+  })
+
+  return runRequest(json, cb)
+}
+
+function wXbindPhone(encryptedData, iv, cb) {
+  var json = JSON.stringify({
+    cmd: "wXbindPhone",
+    encryptedData: encryptedData,
+    iv: encodeURIComponent(iv)
   })
 
   return runRequest(json, cb)
@@ -154,10 +163,10 @@ function addFeedBack(content, cb) {
   return runRequest(json, cb)
 }
 
-function modifySystem(phone, ddAheadNotice, cb) {
+function modifySystem(ddAheadNotice, maintenanceAhead, cb) {
   var json = JSON.stringify({
     cmd: "modifySystem",
-    phone: phone,
+    maintenanceAhead: maintenanceAhead,
     ddAheadNotice: ddAheadNotice
   })
 
@@ -200,14 +209,39 @@ function getUserNoticeTask(taskType, cb) {
   return runRequest(json, cb)
 }
 
+function rechargeRecords(start, count, cb, fail_cb) {
+  var json = JSON.stringify({
+    cmd: "getRechargeRecords",
+    pageIndex: start,
+    pageSize: count
+  })
+
+  return runRequest(json, cb)
+}
+
+function userNoticeRecord(start, count, cb, fail_cb) {
+  var json = JSON.stringify({
+    cmd: "getUserNoticeRecord",
+    pageIndex: start,
+    pageSize: count
+  })
+
+  return runRequest(json, cb)
+}
+
+function getUserMoney(cb) {
+  var json = JSON.stringify({
+    cmd: "getUserMoney"
+  })
+
+  return runRequest(json, cb)
+}
+
 function runRequest(json, cb) {
   var sessionId = wx.getStorageSync('thirdSessionId')
   if ("" == sessionId) {
     return 201;
   }
-  console.log('get thirdSessionId:' + sessionId)
-  console.log(cb)
-
   var dataBytes = crypto.charenc.UTF8.stringToBytes(json)
   var keyBytes = crypto.charenc.UTF8.stringToBytes(sessionId);
   var mode = new crypto.mode.ECB(crypto.pad.pkcs7);
@@ -233,10 +267,10 @@ function runRequest(json, cb) {
         wx.hideNavigationBarLoading()
         return;
       }
-      
+
       if (res.data && res.data.errcode != 1 && res.data.errcode != 10111) {
         if (res.data.errcode == 30102) { //sessionId无效
-          setTimeout(function(){
+          setTimeout(function () {
             var runTime = wx.getStorageSync('runTime')
             if (runTime > 3) {
               message.modal('登录失败,请重新刷新首页')
@@ -250,7 +284,7 @@ function runRequest(json, cb) {
                 })
               }
             })
-          },1000)
+          }, 1000)
           return
         }
 
@@ -290,11 +324,14 @@ module.exports = {
 
   sendAuthCode: sendAuthCode,
   bindPhone: bindPhone,
-
+  wXbindPhone: wXbindPhone,
   cancelUserNoticeTask: cancelUserNoticeTask,
   getUserNoticeTask: getUserNoticeTask,
   modifyUserNoticeTask: modifyUserNoticeTask,
   addFeedBack: addFeedBack,
   modifySystem: modifySystem,
-  getUserSystem: getUserSystem
+  getUserSystem: getUserSystem,
+  rechargeRecords: rechargeRecords,
+  getUserMoney: getUserMoney,
+  userNoticeRecord: userNoticeRecord
 }

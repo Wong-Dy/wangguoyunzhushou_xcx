@@ -1,0 +1,10 @@
+<view class='content-box'>
+  <view class='top'></view>
+  <view class='bind-box'>
+    <button class="authorizebtn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">授权绑定</button>
+    <text class='authorizetext'>一键登入，无需填写验证码</text>
+  </view>
+  <view class='bottom'>
+    <view class='bindmobile' bindtap='bindmobileTap'>或手机号绑定 →</view>
+  </view>
+</view>

@@ -1,0 +1,43 @@
+/* pages/authorizemobile/authorizemobile.wxss */
+
+.content-box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+
+.bind-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.authorizebtn {
+  width: 50%;
+  color: black;
+  background-color: cornflowerblue;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.authorizetext{
+  margin-top: 20px;
+  font-size: 14px;
+  color: darkgray;
+}
+
+.bottom {
+  margin-bottom: 80px;
+}
+
+.bottom .bindmobile {
+  font-size: 16px;
+  border-bottom: 1px solid #000;
+  font-weight: bold;
+}

@@ -1,0 +1,5 @@
+{
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "通知记录",
+  "enablePullDownRefresh": true
+}

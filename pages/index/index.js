@@ -1,10 +1,12 @@
 //index.js
 //获取应用实例
 const app = getApp()
+var api = app.api
+var message = app.message
 
 var util = require('../../utils/util.js')
 var config = require('../../comm/script/config.js')
-var api = require('../../comm/script/fetch.js')
+
 
 var shortTitle = '云助手'
 Page({
@@ -59,10 +61,15 @@ Page({
       initData(that)
     }
 
-    app.loginCallback = function () {
-      console.log('init-222222')
-      init(that)
-    }
+    app.getPersonInfo(function (data) {
+      if (data && data.id > 0) {
+        init(that)
+      } else {
+        app.loginCallback = function () {
+          init(that)
+        }
+      }
+    })
 
     // var random = Math.round(Math.random() * config.bgcolorList.length);
     // this.setData({ bgcolor: config.bgcolorList[random]})
@@ -146,11 +153,6 @@ Page({
       }
     })
 
-  },
-  settingTap: function (e) {
-    wx.navigateTo({
-      url: '../setting/setting'
-    })
   },
   cancelTap: function (e) {
     var that = this
