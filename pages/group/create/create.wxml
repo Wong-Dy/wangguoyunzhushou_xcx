@@ -1,0 +1,21 @@
+<view class="content-box">
+  <form bindsubmit="formSubmit">
+    <view class="list-item">
+      <view class='list-item-group'>
+        <text class="list-item-text">联盟名称</text>
+        <input type='number' name="ddAheadNotice" class="item-input" value='{{ddAheadNotice}}' />
+      </view>
+    </view>
+    <view class="list-item">
+      <view class='list-item-group-last'>
+        <text class="list-item-text">aaaaaaa</text>
+        <input type='number' name="maintenanceAhead" class="item-input" value='{{maintenanceAhead}}' />
+      </view>
+    </view>
+
+    <view class="list-last-item">
+      <button formType="submit" class="submit-btn">保存</button>
+    </view>
+  </form>
+
+</view>

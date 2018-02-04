@@ -28,8 +28,8 @@
   <block wx:else>
     <view class="not-data-view">
       <view class='botton-group'>
-        <button class='create'>创建</button>
-        <button class='join'>加入</button>
+        <button class='create' bindtap='createTap'>创建</button>
+        <button class='join' bindtap='joinTap'>加入</button>
       </view>
       <view class='text-group'>
         <text class='remark'>联盟 hr 建议创建操作，然后分享给成员加入</text>

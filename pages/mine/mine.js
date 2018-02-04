@@ -66,7 +66,7 @@ Page({
   },
   settingTap: function () {
     wx.navigateTo({
-      url: '../mineset/mineset',
+      url: '../setting/setting',
     })
   },
   about: function () {

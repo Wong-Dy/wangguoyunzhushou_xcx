@@ -21,28 +21,7 @@ Page({
   onLoad: function (options) {
     var that = this
 
-    wx.showLoading({
-      title: '拼命加载中...',
-    })
-    setTimeout(function () {
-      wx.hideLoading()
-    }, 2000)
-
-    api.getUserSystem(function (result) {
-      wx.hideLoading()
-      if (result && result.errcode == 1) {
-        that.setData({ phone: result.data.phone, ddAheadNotice: result.data.ddAheadNotice })
-      }
-    })
-
-    wx.getStorage({
-      key: 'person_info',
-      success: function (res) {
-        if (res.data && res.data.money){
-          that.setData({ userMoney: res.data.money})
-        }
-      }
-    })
+    
 
   },
   formSubmit: function (e) {

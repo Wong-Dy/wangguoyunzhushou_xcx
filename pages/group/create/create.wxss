@@ -4,13 +4,6 @@ page {
   background-color: #F8F8F8;
 }
 
-.title-tiqian{
-  margin-top: 10px;
-  padding: 10px 15px; 
-  font-size: 15px;
-  color: darkgray;
-}
-
 .list-item {
   background-color: white;
   padding-left: 15px; 
