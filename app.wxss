@@ -11,6 +11,17 @@ page{
   text-align: center;
 }
 
+.submit-btn{
+  color:white;
+  background-color: deepskyblue;
+  margin: 0px 15px;
+}
+
+.submit-btn:active{
+  background-color: dodgerblue;
+  
+}
+
 .weui-loading {
   margin: 10px 5px;
   width: 25px;

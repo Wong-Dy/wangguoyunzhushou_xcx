@@ -1,0 +1,15 @@
+<view class='content-box'>
+
+  <form bindsubmit="formSubmit">
+    <view class='account-box'>
+      <view class='input-item'>
+        <text>游戏昵称</text>
+        <input type='text' name='nickname' placeholder='游戏内的昵称' maxlength='30' value='{{nickName}}'></input>
+      </view>
+    </view>
+
+    <view class='button-box'>
+      <button formType="submit" class="submit-btn">保存</button>
+    </view>
+  </form>
+</view>

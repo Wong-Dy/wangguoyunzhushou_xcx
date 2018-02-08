@@ -3,9 +3,9 @@
 const app = getApp()
 var api = app.api
 var message = app.message
+var config = app.config
 
 var util = require('../../utils/util.js')
-var config = require('../../comm/script/config.js')
 
 
 var shortTitle = '云助手'
@@ -21,6 +21,7 @@ Page({
     bannerList: config.bannerList,
     menuList: config.menuList,
     hasMore: false,
+    menuBtnWidth: 50,
     currentTime: "00:00:00",
     countDown: "┉┉┉┉",
     lastTime: "00:00:00",
@@ -38,6 +39,9 @@ Page({
   onLoad: function () {
     var that = this
 
+    var menuBtnWidth = wx.getSystemInfoSync().windowWidth / 3 - 17
+    that.setData({ menuBtnWidth: menuBtnWidth })
+
     wx.getSystemInfo({
       success: function (res) {
         var windowWidth = res.windowWidth;
@@ -50,12 +54,7 @@ Page({
     })
 
 
-    wx.showLoading({
-      title: '玩命加载中...',
-    })
-    setTimeout(function () {
-      wx.hideLoading()
-    }, 5000)
+    message.loading()
 
     app.dataCallback = function () {
       initData(that)
@@ -108,16 +107,17 @@ Page({
     }
   },
   menuTap: function (e) {
-    wx.showLoading({
-      title: '拼命加载中...',
-    })
-    setTimeout(function () {
-      wx.hideLoading()
-    }, 3000)
+    message.loading()
 
     var that = this
     var hour = e.currentTarget.dataset.hour
     var minute = hour * 60
+
+    if (hour == that.data.lastHour) {
+      that.cancelTap()
+      return
+    }
+
     wx.getStorage({
       key: 'person_info',
       success: function (res) {
@@ -129,25 +129,25 @@ Page({
             success: function (res) {
               if (res.confirm) {
                 wx.navigateTo({
-                  url: '../setting/setting'
+                  url: '../bindmobile/bindmobile'
                 })
               }
             }
           })
 
-          wx.hideLoading()
+          message.loaded()
           return
         }
         if (res.data.phone) {
           clearTime()
           api.modifyUserNoticeTask(minute, 0, function (result) {
-            wx.hideLoading()
+            message.loaded()
             if (result && result.errcode == 1) {
               that.setData({ lastHour: hour })
               that.setData({ totalSecond: hour * 60 * 60 })
               init(that)
             }
-            wx.hideLoading()
+            message.loaded()
           })
         }
       }
@@ -157,31 +157,22 @@ Page({
   cancelTap: function (e) {
     var that = this
     if (that.data.totalSecond < 1) {
-      wx.showToast({
-        title: '未设置通知',
-        duration: 2000
-      })
+      message.show('未设置通知')
       return
     }
 
-    wx.showLoading({
-      title: '拼命加载中...',
-    })
-    setTimeout(function () {
-      wx.hideLoading()
-    }, 3000)
+    message.loading()
 
     clearTime()
     api.cancelUserNoticeTask(0, function (result) {
+      message.loaded()
       if (result && result.errcode == 1) {
+        message.show("已取消")
+
         that.setData({ totalSecond: -1 })
         init(that)
       }
-      wx.hideLoading()
-      wx.showToast({
-        title: '已取消',
-        duration: 2000
-      })
+      
     })
   }
 
@@ -211,7 +202,7 @@ function initData(that, cb) {
 
 }
 
-function clearTime(){
+function clearTime() {
   //倒计时
   clearInterval(intCountDown)
 }
@@ -258,7 +249,7 @@ function loadTime(that) {
     that.setData({ totalSecond: that.data.totalSecond -= 1 })
   }, 1000)
 
-  wx.hideLoading()
+  message.loaded()
   wx.hideNavigationBarLoading()
 }
 
@@ -289,7 +280,7 @@ function init(that, cb) {
         that.setData({
           bannerList: res.data
         })
-        wx.hideLoading()
+        message.loaded()
         wx.hideNavigationBarLoading()
       } else {
         api.advertisement_21001(function (data) {
@@ -309,7 +300,7 @@ function init(that, cb) {
               bannerList: bannerList
             })
           }
-          wx.hideLoading()
+          message.loaded()
           wx.hideNavigationBarLoading()
 
         })

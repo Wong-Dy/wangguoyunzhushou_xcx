@@ -15,15 +15,19 @@ var distPath = '../../dist'  // dist资源路径
 // var url = 'http://localhost:8301'  //app线下url
 var url = 'https://ww1.isaihu.com'  //app线上url
 module.exports = {
+  storageKey:{
+    userSetting:'user_setting',
+    userGameInfo:'user_game_info'
+  },
   city: '',
   count: 20,
   baiduAK: 'Y1R5guY8Y2GNRdDpLz7SUeM3QgADAXec',
   apiList: {
-    // run: 'https://ww1.isaihu.com/api/applet/wx?account=wx_xcx',
-    // auth: 'https://ww1.isaihu.com/api/applet/wx/auth?system=21',
+    run: 'https://ww1.isaihu.com/api/applet/wx?account=wx_xcx',
+    auth: 'https://ww1.isaihu.com/api/applet/wx/auth?system=21',
 
-    run: 'http://localhost:8081/api/applet/wx?account=wx_xcx',
-    auth: 'http://localhost:8081/api/applet/wx/auth?system=21'
+    // run: 'http://localhost:8301/api/applet/wx?account=wx_xcx',
+    // auth: 'http://localhost:8301/api/applet/wx/auth?system=21'
 
   },
   bannerList: [

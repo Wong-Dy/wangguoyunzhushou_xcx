@@ -1,4 +1,9 @@
 // pages/authorizemobile/authorizemobile.js
+
+const app = getApp()
+var api = app.api
+var message = app.message
+
 Page({
   data: {
 

@@ -7,7 +7,7 @@
     </text>
   </view>
 
-  <view wx:for="{{imgalist}}" wx:for-item="image" wx:for-index="index" class="previewimg">
+  <view wx:for="{{imgalist}}" wx:for-item="image" wx:for-index="index" wx:key='key' class="previewimg">
     <image src="{{image}}" class='sq-image' mode='widthFix' data-src="{{image}}" bindtap="previewImage"></image>
     <block wx:if="{{index == 0}}">
       <text class='wx-text'>点击图片长按保存或截图,用微信扫一扫选择相册保存的图片</text>

@@ -45,13 +45,4 @@ page {
   margin-top: 20px;
 }
 
-.submit-btn{
-  color:white;
-  background-color: deepskyblue;
-  margin: 0px 15px;
-}
 
-.submit-btn:active{
-  background-color: dodgerblue;
-  
-}

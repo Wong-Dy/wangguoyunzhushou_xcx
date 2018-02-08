@@ -2,10 +2,12 @@
 
 var message = require('component/message/message.js')
 var api = require('comm/script/fetch.js')
+var config = require('comm/script/config.js')
 
 App({
   api: api,
   message: message,
+  config: config,
   globalData: {
     userInfo: null
   },

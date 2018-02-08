@@ -24,7 +24,6 @@ Page({
       wx.stopPullDownRefresh() //停止下拉刷新
     }, 1500);
   },
-
   recharge: function () {
     wx.navigateTo({
       url: '../recharge/recharge'
@@ -62,7 +61,11 @@ Page({
       })
     }
 
-
+  },
+  gameAccount: function () {
+    wx.navigateTo({
+      url: '../gameaccount/gameaccount'
+    })
   },
   settingTap: function () {
     wx.navigateTo({
@@ -81,7 +84,7 @@ Page({
   },
   bindmobile: function () {
     wx.navigateTo({
-      url: '../authorizemobile/authorizemobile',
+      url: '../bindmobile/bindmobile',
     })
   },
   noticeRecord: function () {

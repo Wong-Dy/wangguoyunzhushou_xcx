@@ -2,13 +2,13 @@
   <view class='content-box'>
     <view class='top-view'>
       <view class="item-image">
-        <image class="item-list-image" src="../../dist/images/saihuimg.png"></image>
+        <image class="item-list-image" src="../../dist/images/bindmobile_logo.png"></image>
       </view>
       <view class="person-line-radio"></view>
       <form bindsubmit="formSubmit">
         <view class="list-item">
           <text class="list-item-text">手机号</text>
-          <input name="mobile" class="item-input" placeholder="+86" bindblur="mobileBindblur" />
+          <input name="mobile" class="item-input" placeholder="+86" bindinput='mobileInput' />
         </view>
         <view class="person-line"></view>
         <view class="list-item">

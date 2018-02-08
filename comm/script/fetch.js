@@ -181,6 +181,36 @@ function getUserSystem(cb) {
   return runRequest(json, cb)
 }
 
+function modifySetting(params, cb) {
+  params.cmd = "modifySetting"
+  var json = JSON.stringify(params)
+
+  return runRequest(json, cb)
+}
+
+function getUserSetting(cb) {
+  var json = JSON.stringify({
+    cmd: "getUserSetting"
+  })
+
+  return runRequest(json, cb)
+}
+
+function modifyGameAccount(params, cb) {
+  params.cmd = "modifyGameAccount"
+  var json = JSON.stringify(params)
+
+  return runRequest(json, cb)
+}
+
+function getGameAccount(cb) {
+  var json = JSON.stringify({
+    cmd: "getGameAccount"
+  })
+
+  return runRequest(json, cb)
+}
+
 function modifyUserNoticeTask(minute, taskType, cb) {
   var json = JSON.stringify({
     cmd: "modifyUserNoticeTask",
@@ -331,6 +361,10 @@ module.exports = {
   addFeedBack: addFeedBack,
   modifySystem: modifySystem,
   getUserSystem: getUserSystem,
+  modifySetting: modifySetting,
+  getUserSetting: getUserSetting,
+  modifyGameAccount: modifyGameAccount,
+  getGameAccount: getGameAccount,
   rechargeRecords: rechargeRecords,
   getUserMoney: getUserMoney,
   userNoticeRecord: userNoticeRecord

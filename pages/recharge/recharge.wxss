@@ -11,9 +11,9 @@ page {
   padding: 10px 15px;
 }
 
-.top-text-view text{
+.top-text-view text {
   font-size: 14px;
-  color:darkgray;
+  color: darkgray;
 }
 
 .previewimg {
@@ -21,6 +21,8 @@ page {
   width: 100%;
   margin-bottom: 20px;
   padding-top: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .sq-image {
@@ -28,9 +30,9 @@ page {
   width: 100%;
 }
 
-.wx-text,.ali-text{
-  display:block;
+.wx-text, .ali-text {
+  display: block;
   font-size: 14px;
-  color:crimson;
+  color: crimson;
   margin: 10px 15px;
 }

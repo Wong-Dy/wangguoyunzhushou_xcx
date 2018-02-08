@@ -1,8 +1,9 @@
 // pages/setting/setting.js
 
 const app = getApp()
-
-var api = require('../../comm/script/fetch.js')
+var api = app.api
+var message = app.message
+var config = app.config
 
 Page({
 
@@ -10,9 +11,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    phone: '',
-    ddAheadNotice: '',
-    userMoney:0
+    weihuSwitch: true,
+    jijieSwitch: true,
+    jijieSwitch5: true,
+    jijieSwitch4: true,
+    jijieSwitch3: true,
+    jijieSwitch2: true,
+    jijieSwitch1: true
   },
 
   /**
@@ -21,51 +26,148 @@ Page({
   onLoad: function (options) {
     var that = this
 
-    
+    message.loading()
 
-  },
-  formSubmit: function (e) {
-    var that = this
-    if (e.detail.value.mobile.length == 0) {
-      wx.showModal({
-        title: '提示',
-        content: '通知手机号不能为空',
-        showCancel: false
-      })
-    } else {
-      wx.showLoading({
-        title: '加载中...',
-      })
-      setTimeout(function () {
-        wx.hideLoading()
-      }, 2000)
-
-      api.modifySystem(e.detail.value.mobile, e.detail.value.ddAheadNotice, function (result) {
-        wx.hideLoading()
-        if (result && result.errcode == 1) {
-          wx.showModal({
-            title: '提示',
-            content: '设置成功',
-            showCancel: false,
-            success: function (res) {
-              app.refreshUser()
-              if (res.confirm) {
-                wx.navigateBack()
+    wx.getStorage({
+      key: config.storageKey.userSetting,
+      complete: function (res) {
+        if (res.data) {
+          message.loaded()
+          that.setData({
+            weihuSwitch: res.data.openWeihu,
+            jijieSwitch: res.data.openJijie,
+            jijieSwitch5: res.data.openJijie5,
+            jijieSwitch4: res.data.openJijie4,
+            jijieSwitch3: res.data.openJijie3,
+            jijieSwitch2: res.data.openJijie2,
+            jijieSwitch1: res.data.openJijie1,
+          })
+        } else {
+          api.getUserSetting(function (result) {
+            message.loaded()
+            if (result && result.errcode == 1) {
+              var settingParams = {
+                weihuSwitch: result.data.openWeihu,
+                jijieSwitch: result.data.openJijie,
+                jijieSwitch5: result.data.openJijie5,
+                jijieSwitch4: result.data.openJijie4,
+                jijieSwitch3: result.data.openJijie3,
+                jijieSwitch2: result.data.openJijie2,
+                jijieSwitch1: result.data.openJijie1
               }
+              that.setData(settingParams)
+
+              wx.setStorage({
+                key: config.storageKey.userSetting,
+                data: settingParams
+              })
             }
           })
         }
+      }
+    })
+
+
+  },
+  weihuSwitchChange: function (e) {
+    var that = this
+
+    setTimeout(function () {
+      that.setData({ weihuSwitch: e.detail.value })
+
+      submit(that)
+    }, 200)
+
+  },
+  jijieSwitchChange: function (e) {
+    var that = this
+
+    setTimeout(function () {
+      that.setData({ jijieSwitch: e.detail.value })
+    }, 200)
+
+    if (e.detail.value == false) {
+      setTimeout(function () {
+        that.setData({
+          jijieSwitch5: false,
+          jijieSwitch4: false,
+          jijieSwitch3: false,
+          jijieSwitch2: false,
+          jijieSwitch1: false
+        })
+
+        submit(that)
+      }, 200)
+    }
+
+  },
+  jijieLevelSwitchChange: function (e) {
+    var that = this
+
+    setTimeout(function () {
+      switch (parseInt(e.currentTarget.dataset.level)) {
+        case 5:
+          that.setData({ jijieSwitch5: e.detail.value })
+          break;
+        case 4:
+          that.setData({ jijieSwitch4: e.detail.value })
+          break;
+        case 3:
+          that.setData({ jijieSwitch3: e.detail.value })
+          break;
+        case 2:
+          that.setData({ jijieSwitch2: e.detail.value })
+          break;
+        case 1:
+          that.setData({ jijieSwitch1: e.detail.value })
+          break;
+      }
+
+      if (that.data.jijieSwitch5 || that.data.jijieSwitch4
+        || that.data.jijieSwitch5 || that.data.jijieSwitch2 || that.data.jijieSwitch1) {
+        that.setData({ jijieSwitch: true })
+      } else {
+        that.setData({ jijieSwitch: false })
+      }
+
+      submit(that)
+    }, 200)
+
+  },
+  onUnload: function () {
+    submit(this)
+  },
+
+})
+
+var submitStatus = 0;
+
+function submit(that) {
+
+  if (submitStatus == 1)
+    return
+
+  submitStatus = 1
+  var params = {
+    openWeihu: that.data.weihuSwitch,
+    openJijie: that.data.jijieSwitch,
+    openJijie5: that.data.jijieSwitch5,
+    openJijie4: that.data.jijieSwitch4,
+    openJijie3: that.data.jijieSwitch3,
+    openJijie2: that.data.jijieSwitch2,
+    openJijie1: that.data.jijieSwitch1
+  }
+
+  api.modifySetting(params, function (result) {
+    if (result && result.errcode == 1) {
+      wx.setStorage({
+        key: config.storageKey.userSetting,
+        data: params
       })
     }
-  },
-  feedbackTap: function (e) {
-    wx.navigateTo({
-      url: '../feedback/feedback'
-    })
-  },
-  rechargeTap: function (e) {
-    wx.navigateTo({
-      url: '../recharge/recharge'
-    })
-  }
-})
+  })
+  setTimeout(function () {
+    submitStatus = 0
+  }, 1000)
+
+}

@@ -39,6 +39,14 @@
       <image class="item-last-image" src="../../dist/images/ic_arrow_right1.png"></image>
     </view>
     <view class="person-line"></view>
+    <view class="list-item" bindtap="gameAccount">
+      <view class='item-left'>
+        <image class="item-image" src="../../dist/images/game.png"></image>
+        <text class="item-text">游戏帐号</text>
+      </view>
+      <image class="item-last-image" src="../../dist/images/ic_arrow_right1.png"></image>
+    </view>
+    <view class="person-line"></view>
     <view class="list-item" bindtap="noticeRecord">
       <view class='item-left'>
         <image class="item-image" src="../../dist/images/notice_record.png"></image>

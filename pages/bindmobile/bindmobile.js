@@ -35,28 +35,10 @@ Page({
     mobile: '',
     code: ''
   },
-  mobileBindblur: function (e) {
+  mobileInput: function (e) {
     this.setData({
       mobile: e.detail.value
     })
-  },
-  getPhoneNumber: function (e) {
-    if (e.detail.errMsg == 'getPhoneNumber:ok') {
-      api.wXbindPhone(e.detail.encryptedData, e.detail.iv, function (data) {
-        app.refreshUser()
-        message.modal('绑定成功', function () {
-          wx.reLaunch({
-            url: "../mine/mine"
-          })
-        })
-      })
-    } else {
-      // wx.navigateTo({
-      //   url: '../faceverification/faceverification',
-
-      // })
-
-    }
   },
   clickVerify: function (e) {
     var that = this;
@@ -74,6 +56,8 @@ Page({
       that.setData({
         is_show: (!that.data.is_show)   //false
       })
+
+      countdown = 60
       settime(that);
       api.sendAuthCode(that.data.mobile, function (result) {
         if (result && result.errcode == 1) {
@@ -95,7 +79,7 @@ Page({
         app.refreshUser()
         message.modal('绑定成功', function () {
           wx.reLaunch({
-            url: "../mine/mine"
+            url: "../index/index"
           })
         })
       }

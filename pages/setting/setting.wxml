@@ -2,32 +2,42 @@
   <view class='list-box'>
     <view class='list-item-top'>
       <text class='list-item-text'>维护通知</text>
-      <switch checked bindchange="switch1Change" />
+      <switch wx:if='{{weihuSwitch}}' checked bindchange="weihuSwitchChange" />
+      <switch wx:else bindchange="weihuSwitchChange" />
     </view>
     <view class='list-item-top'>
       <text class='list-item-text'>遭受集结通知</text>
-      <switch checked bindchange="switch1Change" />
+      <switch wx:if='{{jijieSwitch}}' checked bindchange="jijieSwitchChange" />
+      <switch wx:else bindchange="jijieSwitchChange" />
     </view>
-    <view class='list-item2'>
-      <text class='list-item-text'>允许R5通知</text>
-      <switch checked bindchange="switch1Change" />
+    <view class='jijie-list'>
+      <view class='list-item2'>
+        <text class='list-item-text'>允许R5通知</text>
+        <switch wx:if='{{jijieSwitch5}}' checked bindchange="jijieLevelSwitchChange" data-level='5'/>
+        <switch wx:else bindchange="jijieLevelSwitchChange" data-level='5'/>
+      </view>
+      <view class='list-item2'>
+        <text class='list-item-text'>允许R4通知</text>
+        <switch wx:if='{{jijieSwitch4}}' checked bindchange="jijieLevelSwitchChange" data-level='4'/>
+        <switch wx:else bindchange="jijieLevelSwitchChange" data-level='4'/>
+      </view>
+      <view class='list-item2'>
+        <text class='list-item-text'>允许R3通知</text>
+        <switch wx:if='{{jijieSwitch3}}' checked bindchange="jijieLevelSwitchChange" data-level='3'/>
+        <switch wx:else bindchange="jijieLevelSwitchChange" data-level='3'/>
+      </view>
+      <view class='list-item2'>
+        <text class='list-item-text'>允许R2通知</text>
+        <switch wx:if='{{jijieSwitch2}}' checked bindchange="jijieLevelSwitchChange" data-level='2'/>
+        <switch wx:else bindchange="jijieLevelSwitchChange" data-level='2'/>
+      </view>
+      <view class='list-item2'>
+        <text class='list-item-text'>允许R1通知</text>
+        <switch wx:if='{{jijieSwitch1}}' checked bindchange="jijieLevelSwitchChange" data-level='1'/>
+        <switch wx:else bindchange="jijieLevelSwitchChange" data-level='1'/>
+      </view>
     </view>
-    <view class='list-item2'>
-      <text class='list-item-text'>允许R4通知</text>
-      <switch checked bindchange="switch1Change" />
-    </view>
-    <view class='list-item2'>
-      <text class='list-item-text'>允许R3通知</text>
-      <switch checked bindchange="switch1Change" />
-    </view>
-    <view class='list-item2'>
-      <text class='list-item-text'>允许R2通知</text>
-      <switch checked bindchange="switch1Change" />
-    </view>
-    <view class='list-item2'>
-      <text class='list-item-text'>允许R1通知</text>
-      <switch checked bindchange="switch1Change" />
-    </view>
+
 
   </view>
 

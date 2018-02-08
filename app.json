@@ -16,7 +16,8 @@
     "pages/notice/record/record",
     "pages/notice/config/config",
     "pages/group/create/create",
-    "pages/group/join/join"
+    "pages/group/join/join",
+    "pages/gameaccount/gameaccount"
   ],
   "tabBar": {
     "color": "#000000",
