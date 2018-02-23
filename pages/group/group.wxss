@@ -48,7 +48,6 @@ page {
 .item-left-info {
   display: flex;
   flex-direction: column;
-  margin-top: 5px;
   margin-left: 5px;
 }
 

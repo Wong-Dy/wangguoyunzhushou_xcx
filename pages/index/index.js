@@ -60,15 +60,10 @@ Page({
       initData(that)
     }
 
-    app.getPersonInfo(function (data) {
-      if (data && data.id > 0) {
-        init(that)
-      } else {
-        app.loginCallback = function () {
-          init(that)
-        }
-      }
-    })
+    app.loginCallback = function () {
+      init(that)
+    }
+   
 
     // var random = Math.round(Math.random() * config.bgcolorList.length);
     // this.setData({ bgcolor: config.bgcolorList[random]})

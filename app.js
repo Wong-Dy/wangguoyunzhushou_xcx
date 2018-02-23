@@ -97,6 +97,7 @@ App({
     this.auth(function (sessionId) {
 
       that.getPersonInfo(function (personInfo) {
+        console.log('getUserInfo-auth-getPersonInfo')
         console.log(personInfo)
         if (personInfo && personInfo.id > 0) {
           if (that.loginCallback) {
@@ -113,7 +114,7 @@ App({
             })
             that.globalData.userInfo = userRes.userInfo;
             api.login(sessionId, userRes.encryptedData, userRes.iv, function (data) {
-
+              console.log('api.login')
               if (!personInfo)
                 personInfo = {}
               personInfo.nickName = userRes.userInfo.nickName
@@ -133,6 +134,7 @@ App({
 
                 typeof cb == "function" && cb(userRes.userInfo)
 
+                console.log('loginCallback')
                 if (that.loginCallback) {
                   that.loginCallback()
                 }

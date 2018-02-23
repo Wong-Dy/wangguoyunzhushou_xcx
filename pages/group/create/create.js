@@ -1,66 +1,42 @@
 // pages/group/create/create.js
+
+const app = getApp()
+var api = app.api
+var message = app.message
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this
   },
+  formSubmit: function (e) {
+    console.log(e)
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
+    if (e.detail.value.name.length < 1) {
+      message.warn('请输入联盟名称')
+      return
+    }
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
+    message.loading('提交中...')
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+    api.createGroup(e.detail.value.name, e.detail.value.kcode,
+      e.detail.value.locationX, e.detail.value.locationY, function (result) {
+        if (result.errcode == 1) {
+          message.loaded()
+          message.show('创建成功', 3000, function () {
+            wx.navigateBack()
+          })
+        }
+      })
   }
 })

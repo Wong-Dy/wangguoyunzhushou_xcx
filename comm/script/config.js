@@ -23,11 +23,11 @@ module.exports = {
   count: 20,
   baiduAK: 'Y1R5guY8Y2GNRdDpLz7SUeM3QgADAXec',
   apiList: {
-    run: 'https://ww1.isaihu.com/api/applet/wx?account=wx_xcx',
-    auth: 'https://ww1.isaihu.com/api/applet/wx/auth?system=21',
+    // run: 'https://ww1.isaihu.com/api/applet/wx?account=wx_xcx',
+    // auth: 'https://ww1.isaihu.com/api/applet/wx/auth?system=21',
 
-    // run: 'http://localhost:8301/api/applet/wx?account=wx_xcx',
-    // auth: 'http://localhost:8301/api/applet/wx/auth?system=21'
+    run: 'http://192.168.1.107:8081/api/applet/wx?account=wx_xcx',
+    auth: 'http://192.168.1.107:8081//api/applet/wx/auth?system=21'
 
   },
   bannerList: [

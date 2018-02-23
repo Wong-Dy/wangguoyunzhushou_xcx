@@ -267,6 +267,74 @@ function getUserMoney(cb) {
   return runRequest(json, cb)
 }
 
+
+function createGroup(name, district, locationX, locationY, cb) {
+  var json = JSON.stringify({
+    cmd: "createGroup",
+    name: name,
+    district: district,
+    locationX: locationX,
+    locationY: locationY
+  })
+
+  return runRequest(json, cb)
+}
+function updateGroup(params, cb) {
+  params.cmd = "updateGroup"
+  var json = JSON.stringify()
+
+  return runRequest(json, cb)
+}
+function getUserGroup(cb) {
+  var json = JSON.stringify({
+    cmd: "getUserGroup"
+  })
+
+  return runRequest(json, cb)
+}
+function getUserGroupList(cb) {
+  var json = JSON.stringify({
+    cmd: "getUserGroupList"
+  })
+
+  return runRequest(json, cb)
+}
+
+function getGroupInviteCode(cb) {
+  var json = JSON.stringify({
+    cmd: "getGroupInviteCode"
+  })
+
+  return runRequest(json, cb)
+}
+function joinGroup(inviteCode, cb) {
+  var json = JSON.stringify({
+    cmd: "joinGroup",
+    inviteCode: inviteCode
+  })
+
+  return runRequest(json, cb)
+}
+function shareJoinGroup(sendUserId, groupId, cb) {
+  var json = JSON.stringify({
+    cmd: "shareJoinGroup",
+    shareUserId: sendUserId,
+    groupId: groupId
+  })
+
+  return runRequest(json, cb)
+}
+function sendJiJieNotice(toUserId,type, cb) {
+  var json = JSON.stringify({
+    cmd: "sendJiJieNotice",
+    toUserId: toUserId,
+    type: type
+  })
+
+  return runRequest(json, cb)
+}
+
+
 function runRequest(json, cb) {
   var sessionId = wx.getStorageSync('thirdSessionId')
   if ("" == sessionId) {
@@ -367,5 +435,14 @@ module.exports = {
   getGameAccount: getGameAccount,
   rechargeRecords: rechargeRecords,
   getUserMoney: getUserMoney,
-  userNoticeRecord: userNoticeRecord
+  userNoticeRecord: userNoticeRecord,
+
+  createGroup: createGroup,
+  updateGroup: updateGroup,
+  getUserGroup: getUserGroup,
+  getUserGroupList: getUserGroupList,
+  getGroupInviteCode: getGroupInviteCode,
+  joinGroup: joinGroup,
+  shareJoinGroup: shareJoinGroup,
+  sendJiJieNotice: sendJiJieNotice
 }

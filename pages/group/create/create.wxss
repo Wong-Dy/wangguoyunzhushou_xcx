@@ -1,19 +1,18 @@
-
 page {
   height: 100%;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
 }
 
 .list-item {
   background-color: white;
-  padding-left: 15px; 
+  padding: 0 15px;
 }
 
 .list-item-group {
   display: flex;
   flex-flow: row;
   align-items: center;
-  border-bottom: 1px solid #F4F4F4;
+  border-bottom: 1px solid #f4f4f4;
   padding: 10px 15px 10px 0px;
 }
 
@@ -30,21 +29,10 @@ page {
 }
 
 .list-item .item-input {
-  flex:1;
+  flex: 1;
   font-size: 15px;
 }
 
 .list-last-item {
   margin-top: 20px;
-}
-
-.submit-btn{
-  color:white;
-  background-color: deepskyblue;
-  margin: 0px 15px;
-}
-
-.submit-btn:active{
-  background-color: dodgerblue;
-  
 }
