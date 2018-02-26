@@ -1,0 +1,38 @@
+page {
+  height: 100%;
+  background-color: #f8f8f8;
+}
+
+.list-item {
+  background-color: white;
+  padding: 0 15px;
+}
+
+.list-item-group {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  border-bottom: 1px solid #f4f4f4;
+  padding: 10px 15px 10px 0px;
+}
+
+.list-item-group-last {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  padding: 10px 15px 10px 0px;
+}
+
+.list-item .list-item-text {
+  width: 30%;
+  font-size: 16px;
+}
+
+.list-item .item-input {
+  flex: 1;
+  font-size: 15px;
+}
+
+.list-last-item {
+  margin-top: 20px;
+}

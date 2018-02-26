@@ -10,6 +10,7 @@
 
 
   <view class='timeview' style='background-color: {{bgcolor}}'>
+    <view class='desc-view'>设置艾娜希之盾到期提醒时间</view>
     <view class='line-default'></view>
 
     <view class='current-time-view'>
@@ -31,9 +32,10 @@
 
   <view class='menuview' style='background-color: {{bgcolor}}'>
     <block wx:for-items="{{menuList}}" wx:key="index">
-      <view class="menubtn-view" bindtap="menuTap" data-hour="{{item.hour}}">
-        <button class="menu-button {{lastHour==item.hour?'menu-button-active':'menu-button-default'}}"
-        style='width:{{menuBtnWidth}}px;'>{{item.name}}</button>
+      <view class="menubtn-view" bindtap="menuTap" data-hour="{{item.hour}}" data-minute="{{item.minute}}" data-type="{{item.type}}">
+        <button wx:if="{{item.type==1}}" class="menu-button {{lastHour==item.hour?'menu-button-active':'menu-button-default'}}" style='width:{{menuBtnWidth}}px;'>{{item.name}}</button>
+
+        <button wx:if="{{item.type!=1}}" class="menu-button-update}}" style='width:{{menuBtnWidth}}px;'>{{item.name}}</button>
       </view>
     </block>
   </view>

@@ -1,0 +1,15 @@
+<view class='content-box'>
+  <view class='list-box'>
+    <view class='list-item-top'>
+      <text class='list-item-text'>允许分享加入</text>
+      <switch wx:if='{{shareJoinSwitch}}' checked bindchange="shareJoinSwitchChange" />
+      <switch wx:else bindchange="shareJoinSwitchChange" />
+    </view>
+    <view class='list-item-top'>
+      <text class='list-item-text'>允许邀请码加入</text>
+      <switch wx:if='{{inviteCodeSwitch}}' checked bindchange="inviteCodeSwitchChange" />
+      <switch wx:else bindchange="inviteCodeSwitchChange" />
+    </view>
+  </view>
+
+</view>

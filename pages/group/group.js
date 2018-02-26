@@ -8,6 +8,7 @@ Page({
   * 页面的初始数据
   */
   data: {
+    readyUpdate: false,
     disabled: true,
     dataList: [],
     groupMaster: 0,
@@ -35,6 +36,26 @@ Page({
         // 转发失败
       }
     }
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    console.log('onReady')
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    console.log('onShow')
+
+    var that = this
+    if (that.data.readyUpdate || that.data.dataList.length < 1)
+      bindData(that)
+
+    that.setData({ readyUpdate: false })
+
   },
   onLoad: function (options) {
     var that = this
@@ -74,43 +95,64 @@ Page({
       url: 'create/create',
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  joinTap: function (e) {
+    wx.navigateTo({
+      url: 'join/join',
+    })
   },
+  groupInfoTap: function (e) {
+    var that = this
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+    var actionList = []
+    if (that.data.groupMaster == that.data.groupUserId) {
+      actionList.push('编辑')
+      actionList.push('设置')
+    }
 
+    if (actionList.length < 1)
+      return
+
+    wx.showActionSheet({
+      itemList: actionList,
+      success: function (res) {
+        var actionName = actionList[res.tapIndex]
+        if (actionName == '编辑') {
+          that.setData({ readyUpdate: true })
+          wx.navigateTo({
+            url: 'edit/edit',
+          })
+        } else if (actionName == '设置') {
+          wx.navigateTo({
+            url: 'setting/setting',
+          })
+        }
+      }
+    })
   },
   itemTap: function (e) {
     var that = this
     var item = that.data.dataList[e.currentTarget.dataset.index]
+    var curUserId = e.currentTarget.dataset.userid
 
     var actionList = []
 
-    if (e.currentTarget.dataset.userid != that.data.groupUserId)
+    if (curUserId != that.data.groupUserId)
       actionList.push('遭受集结通知')
 
-    if (e.currentTarget.dataset.userid != that.data.groupUserId
-      && that.data.groupMaster == that.data.groupUserId && item.level < 4) {
+    if (curUserId != that.data.groupUserId
+      && that.data.groupMaster == that.data.groupUserId && item.level <= 4) {
       actionList.push('阶级更变')
     }
 
-    if (e.currentTarget.dataset.userid != that.data.groupUserId
+    if (curUserId != that.data.groupUserId
       && that.data.groupMaster == that.data.groupUserId && item.level < 5) {
       actionList.push('请出联盟')
     }
 
-    if (e.currentTarget.dataset.userid == that.data.groupUserId
-      && that.data.groupMaster == that.data.groupUserId)
+    if (that.data.groupMaster == that.data.groupUserId && item.level == 4)
       actionList.push('让位盟主')
 
-    if (e.currentTarget.dataset.userid == that.data.groupUserId)
+    if (curUserId == that.data.groupUserId)
       actionList.push('退出联盟')
 
     wx.showActionSheet({
@@ -119,7 +161,7 @@ Page({
         var actionName = actionList[res.tapIndex]
         if (actionName == '遭受集结通知') {
           message.loading()
-          api.sendJiJieNotice(e.currentTarget.dataset.userid, 0, function (result) {
+          api.sendJiJieNotice(curUserId, 0, function (result) {
             message.loaded()
             if (result.errcode == 1) {
               if (!result.data) {
@@ -134,7 +176,7 @@ Page({
                   success: function (res) {
                     if (res.confirm) {
                       message.loading()
-                      api.sendJiJieNotice(e.currentTarget.dataset.userid, 1, function (result) {
+                      api.sendJiJieNotice(curUserId, 1, function (result) {
                         message.loaded()
                         if (result.errcode == 1 && !result.data) {
                           message.modal('通知成功')
@@ -183,9 +225,58 @@ Page({
             itemList: actionList2,
             success: function (res) {
               console.log(res.tapIndex)
+              var level = 0
+              if (actionList2[res.tapIndex] == '4阶') {
+                level = 4
+              } else if (actionList2[res.tapIndex] == '3阶') {
+                level = 3
+              } else if (actionList2[res.tapIndex] == '2阶') {
+                level = 2
+              } else if (actionList2[res.tapIndex] == '1阶') {
+                level = 1
+              }
+              if (level == 0) {
+                return
+              }
+              api.updateGroupLevel(curUserId, level, function (result) {
+                if (result.errcode == 1) {
+                  bindData(that)
+                  message.show('更改成功')
+                }
+              })
             },
             fail: function (res) {
               console.log(res.errMsg)
+            }
+          })
+        } else if (actionName == '请出联盟') {
+          message.modal2('确认操作？', function (res) {
+            if (res.confirm) {
+              api.deleteGroupMember(curUserId, function (result) {
+                if (result && result.errcode == 1) {
+                  bindData(that)
+                  message.modal('已将成员请出')
+                }
+              })
+            }
+          })
+        } else if (actionName == '让位盟主') {
+          message.modal2('确认操作？', function (res) {
+            if (res.confirm) {
+              api.abdicateGroupMaster(curUserId, function (result) {
+                if (result && result.errcode == 1) {
+                  bindData(that)
+                  message.modal('已将盟主让出')
+                }
+              })
+            }
+          })
+
+        } else if (actionName == '退出联盟') {
+          api.leaveGroup(function (result) {
+            if (result && result.errcode == 1) {
+              bindData(that)
+              message.modal('已退联盟')
             }
           })
         }
@@ -194,6 +285,9 @@ Page({
         console.log(res.errMsg)
       }
     })
+  },
+  helpTap: function (e) {
+    message.modal('联盟功能不与游戏相关联，可自定义加入其他成员，统一管理，暂时最多容纳200人')
   }
 
 })
@@ -215,9 +309,18 @@ function bindData(that, cb) {
             groupName: result.data.groupName,
             groupId: result.data.id
           })
-          initData(that)
-          typeof cb == 'function' && cb()
+        } else {
+          that.setData({ dataList: [] })
+          that.setData({
+            groupMaster: 0,
+            groupLevel: 0,
+            groupUserId: 0,
+            groupName: '',
+            groupId: 0
+          })
         }
+        initData(that)
+        typeof cb == 'function' && cb()
       })
     } else {
       setTimeout(function () {

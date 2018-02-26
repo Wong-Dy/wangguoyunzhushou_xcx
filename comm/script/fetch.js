@@ -221,6 +221,17 @@ function modifyUserNoticeTask(minute, taskType, cb) {
   return runRequest(json, cb)
 }
 
+function updateUserNoticeTaskTime(minute, taskType, timeType, cb) {
+  var json = JSON.stringify({
+    cmd: "updateUserNoticeTaskTime",
+    minute: minute,
+    type: taskType,
+    timeType: timeType
+  })
+
+  return runRequest(json, cb)
+}
+
 function cancelUserNoticeTask(taskType, cb) {
   var json = JSON.stringify({
     cmd: "cancelUserNoticeTask",
@@ -281,7 +292,13 @@ function createGroup(name, district, locationX, locationY, cb) {
 }
 function updateGroup(params, cb) {
   params.cmd = "updateGroup"
-  var json = JSON.stringify()
+  var json = JSON.stringify(params)
+
+  return runRequest(json, cb)
+} 
+function updateGroupSetting(params, cb) {
+  params.cmd = "updateGroupSetting"
+  var json = JSON.stringify(params)
 
   return runRequest(json, cb)
 }
@@ -324,7 +341,7 @@ function shareJoinGroup(sendUserId, groupId, cb) {
 
   return runRequest(json, cb)
 }
-function sendJiJieNotice(toUserId,type, cb) {
+function sendJiJieNotice(toUserId, type, cb) {
   var json = JSON.stringify({
     cmd: "sendJiJieNotice",
     toUserId: toUserId,
@@ -333,7 +350,38 @@ function sendJiJieNotice(toUserId,type, cb) {
 
   return runRequest(json, cb)
 }
+function updateGroupLevel(memberUserId, level, cb) {
+  var json = JSON.stringify({
+    cmd: "updateGroupLevel",
+    memberUserId: memberUserId,
+    level: level
+  })
 
+  return runRequest(json, cb)
+}
+function deleteGroupMember(memberUserId, cb) {
+  var json = JSON.stringify({
+    cmd: "deleteGroupMember",
+    memberUserId: memberUserId
+  })
+
+  return runRequest(json, cb)
+}
+function abdicateGroupMaster(memberUserId, cb) {
+  var json = JSON.stringify({
+    cmd: "abdicateGroupMaster",
+    memberUserId: memberUserId
+  })
+
+  return runRequest(json, cb)
+}
+function leaveGroup(cb) {
+  var json = JSON.stringify({
+    cmd: "leaveGroup"
+  })
+
+  return runRequest(json, cb)
+}
 
 function runRequest(json, cb) {
   var sessionId = wx.getStorageSync('thirdSessionId')
@@ -387,7 +435,7 @@ function runRequest(json, cb) {
         }
 
         wx.showModal({
-          title: '发生错误',
+          title: '系统提示',
           content: res.data.errmsg,
           showCancel: false
         })
@@ -426,6 +474,7 @@ module.exports = {
   cancelUserNoticeTask: cancelUserNoticeTask,
   getUserNoticeTask: getUserNoticeTask,
   modifyUserNoticeTask: modifyUserNoticeTask,
+  updateUserNoticeTaskTime: updateUserNoticeTaskTime,
   addFeedBack: addFeedBack,
   modifySystem: modifySystem,
   getUserSystem: getUserSystem,
@@ -439,10 +488,15 @@ module.exports = {
 
   createGroup: createGroup,
   updateGroup: updateGroup,
+  updateGroupSetting: updateGroupSetting,
   getUserGroup: getUserGroup,
   getUserGroupList: getUserGroupList,
   getGroupInviteCode: getGroupInviteCode,
   joinGroup: joinGroup,
   shareJoinGroup: shareJoinGroup,
-  sendJiJieNotice: sendJiJieNotice
+  sendJiJieNotice: sendJiJieNotice,
+  updateGroupLevel: updateGroupLevel,
+  deleteGroupMember: deleteGroupMember,
+  abdicateGroupMaster: abdicateGroupMaster,
+  leaveGroup: leaveGroup
 }

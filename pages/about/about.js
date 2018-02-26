@@ -11,7 +11,7 @@ Page({
     wx: '微信:wdy78925880',
     phone: '',
     tel: '',
-    email: '78925880@qq.com',
+    email: '邮箱:78925880@qq.com',
   },
 
   /**

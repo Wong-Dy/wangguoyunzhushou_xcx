@@ -1,2 +1,10 @@
 <!--pages/group/join/join.wxml-->
-<text>pages/group/join/join.wxml</text>
+<view class='content-box'>
+  <form bindsubmit="formSubmit">
+    <view class='join-box'>
+
+      <input class='code' type='text' name='code' placeholder='邀请码' maxlength='18'></input>
+      <button formType="submit" class='submit-btn'>加入</button>
+    </view>
+  </form>
+</view>

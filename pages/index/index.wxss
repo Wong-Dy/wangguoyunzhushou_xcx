@@ -30,7 +30,7 @@ page {
   justify-content: center;
   flex-flow: column;
   background-color: #e7f6f1;
-  padding: 30px 15px 10px 15px;
+  padding: 15px 15px 10px 15px;
 }
 
 .current-time, .last-time {
@@ -100,7 +100,7 @@ page {
   border: 0px;
   border-radius: 2px 2px;
   line-height: 3.5;
-  font-size:15px;
+  font-size: 15px;
 }
 
 .menu-button-active {
@@ -108,12 +108,30 @@ page {
 }
 
 .menu-button:active {
-  color:#fff;
-  background-color: #8C7B74;
+  color: #fff;
+  background-color: #6A9D97;
 }
 
 .menu-button-default {
   background-color: #99bcb8;
+}
+
+.menu-button-update {
+  color: orangered;
+  text-align: center;
+  height: 50px;
+  width: 110px;
+  margin: 0 auto;
+  border: 0px;
+  border-radius: 2px 2px;
+  line-height: 3.5;
+  font-size: 15px;
+  background-color: #96E2D9;
+}
+
+.menu-button-update:active {
+  color: red;
+  background-color: #4DCEBE;
 }
 
 .settingview {
@@ -131,15 +149,12 @@ page {
   border-radius: 3px;
   overflow: hidden;
   color: #fff;
-  background-color: #44978D;
+  background-color: #44978d;
 }
 
 .setting:active {
-  background-color: #2A6247;
+  background-color: #2a6247;
 }
-
-
-
 
 /*recommend-*/
 
@@ -199,4 +214,11 @@ page {
   font-size: 16px;
   font-weight: bold;
   color: #3f4045;
+}
+
+.desc-view {
+  text-align: center;
+  font-size: 14px;
+  color: orangered;
+  padding-bottom: 5px;
 }

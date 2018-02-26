@@ -1,0 +1,33 @@
+<view class="content-box">
+  <form bindsubmit="formSubmit">
+    <view class="list-item">
+      <view class='list-item-group'>
+        <text class="list-item-text">联盟名称</text>
+        <input type='number' name="name" class="item-input" placeholder='联盟名称' value='{{name}}'/>
+      </view>
+    </view>
+    <view class="list-item">
+      <view class='list-item-group'>
+        <text class="list-item-text">王国编号</text>
+        <input type='number' name="kcode" class="item-input" placeholder='K:1' value='{{kcode}}'/>
+      </view>
+    </view>
+    <view class="list-item">
+      <view class='list-item-group'>
+        <text class="list-item-text">位置坐标X</text>
+        <input type='number' name="locationX" class="item-input" placeholder='集合坐标X:1' value='{{locationX}}'/>
+      </view>
+    </view>
+    <view class="list-item">
+      <view class='list-item-group-last'>
+        <text class="list-item-text">位置坐标Y</text>
+        <input type='number' name="locationY" class="item-input" placeholder='集合坐标Y:1' value='{{locationY}}'/>
+      </view>
+    </view>
+
+    <view class="list-last-item">
+      <button formType="submit" class="submit-btn">保存</button>
+    </view>
+  </form>
+
+</view>

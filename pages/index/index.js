@@ -63,7 +63,7 @@ Page({
     app.loginCallback = function () {
       init(that)
     }
-   
+
 
     // var random = Math.round(Math.random() * config.bgcolorList.length);
     // this.setData({ bgcolor: config.bgcolorList[random]})
@@ -105,10 +105,11 @@ Page({
     message.loading()
 
     var that = this
+    var btntype = e.currentTarget.dataset.type
     var hour = e.currentTarget.dataset.hour
     var minute = hour * 60
 
-    if (hour == that.data.lastHour) {
+    if (btntype == 1 && hour == that.data.lastHour) {
       that.cancelTap()
       return
     }
@@ -134,6 +135,24 @@ Page({
           return
         }
         if (res.data.phone) {
+          if (btntype != 1) {
+            if (that.data.lastHour < 1) {
+              message.warn('请先设置时间')
+              return
+            }
+
+            clearTime()
+            api.updateUserNoticeTaskTime(e.currentTarget.dataset.minute, 0, btntype, function (result) {
+              message.loaded()
+              if (result && result.errcode == 1) {
+                init(that)
+              }
+              message.loaded()
+            })
+
+            return
+          }
+
           clearTime()
           api.modifyUserNoticeTask(minute, 0, function (result) {
             message.loaded()
@@ -167,7 +186,7 @@ Page({
         that.setData({ totalSecond: -1 })
         init(that)
       }
-      
+
     })
   }
 

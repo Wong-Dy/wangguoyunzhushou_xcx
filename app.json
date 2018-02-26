@@ -17,7 +17,9 @@
     "pages/notice/config/config",
     "pages/group/create/create",
     "pages/group/join/join",
-    "pages/gameaccount/gameaccount"
+    "pages/gameaccount/gameaccount",
+    "pages/group/setting/setting",
+    "pages/group/edit/edit"
   ],
   "tabBar": {
     "color": "#000000",

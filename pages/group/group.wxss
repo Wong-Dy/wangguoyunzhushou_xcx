@@ -18,7 +18,6 @@ page {
 .list-box {
   display: flex;
   flex-direction: column;
-  margin-top: 5px;
   background-color: white;
   margin-bottom: 10px;
   /* box-shadow: 0 0 40rpx #f4f4f4 inset; */
@@ -27,6 +26,7 @@ page {
 .list-item {
   display: flex;
   flex-direction: row;
+  align-items: center;
   background-color: #fff;
   border-bottom: 1px solid #f4f4f4;
   padding: 10px 15px;
@@ -35,6 +35,7 @@ page {
 .list-item-last {
   display: flex;
   flex-direction: row;
+  align-items: center;
   background-color: #fff;
   padding: 10px 15px;
 }
@@ -63,7 +64,6 @@ page {
 .item-right {
   display: flex;
   flex-direction: row;
-  margin-top: 10px;
 }
 
 .item-right .top1 {
@@ -122,4 +122,75 @@ page {
   font-size: 14px;
   color: darkred;
   margin-bottom: 26px;
+}
+
+.level-lable {
+  width: 100%;
+  padding: 7px 15px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4;
+}
+
+.level-lable text {
+  color: darkcyan;
+  font-size: 17px;
+}
+
+.help-view {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+}
+
+.help-view text {
+  font-size: 15px;
+  color: darkslateblue;
+}
+
+.group-info {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #fff;
+  /* border-bottom: 5px solid cornflowerblue; */
+  box-shadow: 0px 5px 10px cornflowerblue;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+}
+
+.group-info-left {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.group-info-content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+}
+
+.group-info-content .top1 {
+  font-size: 17px;
+}
+
+.group-info-content .top2 {
+  font-size: 14px;
+  color: darkgray;
+}
+
+.group-info-right {
+  display: flex;
+  flex-direction: row;
+}
+
+.group-info-right .top1 {
+  font-size: 16px;
+  color: darkblue;
 }
