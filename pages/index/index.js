@@ -32,7 +32,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: '王国云助手',
-      desc: '强大的语音电话云提醒，前100名注册赠送免费通知!',
+      desc: '防掉盾必备，自定义联盟成员管理!',
       path: '/pages/index/index'
     }
   },
@@ -44,8 +44,7 @@ Page({
 
     wx.getSystemInfo({
       success: function (res) {
-        var windowWidth = res.windowWidth;
-
+        var windowWidth = res.windowWidth
         that.setData({
           slideimagewidth: windowWidth,
           slideimageheight: windowWidth / 2
@@ -285,7 +284,6 @@ function init(that, cb) {
   })
 
   typeof cb == 'function' && cb()
-  return
 
   wx.getStorage({
     key: 'adv_bannerList',
