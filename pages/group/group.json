@@ -1,4 +1,5 @@
 {
   "enablePullDownRefresh": true,
-  "navigationBarTitleText": "联盟"
+  "navigationBarTitleText": "联盟",
+  "backgroundColor": "#F8F8F8"
 }

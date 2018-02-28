@@ -9,7 +9,7 @@
           <text class='top2'>成员：{{dataList.length}}</text>
         </view>
       </view>
-      <view class='group-info-right'>
+      <view class='group-info-right' catchtap='groupActionTap'>
         <image class='top1' src='../../dist/images/more_style3.png' style='width:30px' mode='widthFix'></image>
       </view>
     </view>

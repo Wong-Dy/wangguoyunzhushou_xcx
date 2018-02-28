@@ -36,6 +36,7 @@ Page({
       district: e.detail.value.kcode,
       locationX: e.detail.value.locationX,
       locationY: e.detail.value.locationY,
+      notice: e.detail.value.notice
     }
     api.updateGroup(params, function (result) {
       if (result.errcode == 1) {
@@ -59,7 +60,8 @@ function bindData(that) {
         name: result.data.groupName,
         kcode: result.data.district,
         locationX: result.data.locationX,
-        locationY: result.data.locationY
+        locationY: result.data.locationY,
+        notice: result.data.groupNotice
       })
 
     }

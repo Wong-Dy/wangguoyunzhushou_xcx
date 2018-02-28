@@ -3,7 +3,7 @@
     <view class="list-item">
       <view class='list-item-group'>
         <text class="list-item-text">联盟名称</text>
-        <input type='number' name="name" class="item-input" placeholder='联盟名称' value='{{name}}'/>
+        <input type='text' name="name" class="item-input" placeholder='联盟名称' value='{{name}}' maxlength='20'/>
       </view>
     </view>
     <view class="list-item">
@@ -19,9 +19,14 @@
       </view>
     </view>
     <view class="list-item">
-      <view class='list-item-group-last'>
+      <view class='list-item-group'>
         <text class="list-item-text">位置坐标Y</text>
         <input type='number' name="locationY" class="item-input" placeholder='集合坐标Y:1' value='{{locationY}}'/>
+      </view>
+    </view>
+    <view class="list-item">
+      <view class='list-item-group-last'>
+        <textarea name="notice" class="item-input" placeholder='联盟公告' value='{{notice}}' maxlength='500'></textarea>
       </view>
     </view>
 

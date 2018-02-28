@@ -48,11 +48,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('onShow')
+    console.log('group-onShow')
 
     var that = this
-    if (that.data.readyUpdate || that.data.dataList.length < 1)
+    if (that.data.readyUpdate) {
       bindData(that)
+    }
 
     that.setData({ readyUpdate: false })
 
@@ -60,6 +61,7 @@ Page({
   onLoad: function (options) {
     var that = this
 
+    message.loading()
     bindData(that, function () {
       if (options && options.type && options.type == '1') {
         if (dataList.length > 0)
@@ -88,19 +90,34 @@ Page({
   },
   onPullDownRefresh: function () {
     var that = this
-    bindData(that)
+
+    wx.showNavigationBarLoading()
+    bindData(this, function () {
+      wx.stopPullDownRefresh()
+      wx.hideNavigationBarLoading()
+    })
+
   },
   createTap: function (e) {
+    var that = this
+    that.setData({ readyUpdate: true })
     wx.navigateTo({
       url: 'create/create',
     })
   },
   joinTap: function (e) {
+    var that = this
+    that.setData({ readyUpdate: true })
     wx.navigateTo({
       url: 'join/join',
     })
   },
   groupInfoTap: function (e) {
+    wx.navigateTo({
+      url: 'detail/detail',
+    })
+  },
+  groupActionTap: function (e) {
     var that = this
 
     var actionList = []
@@ -296,9 +313,26 @@ Page({
           })
 
         } else if (actionName == '退出联盟') {
+          if (that.data.dataList.length == 1){
+            message.modal2('确认解散联盟？', function (res) {
+              if (res.confirm) {
+                api.leaveGroup(function (result) {
+                  if (result && result.errcode == 1) {
+                    bindData(that,function(){
+                      that.setData({ disabled: false })
+                    })
+                    message.modal('已退联盟')
+                  }
+                })
+              }
+            })
+            return
+          }
           api.leaveGroup(function (result) {
             if (result && result.errcode == 1) {
-              bindData(that)
+              bindData(that, function () {
+                that.setData({ disabled: false })
+              })
               message.modal('已退联盟')
             }
           })
@@ -316,13 +350,11 @@ Page({
 })
 
 function bindData(that, cb) {
-  message.loading()
 
   app.getPersonInfo(function (data) {
     if (data && data.id > 0) {
       api.getUserGroupList(function (result) {
-        message.loaded()
-        wx.stopPullDownRefresh()
+
         if (result && result.errcode == 1 && result.data.dataList) {
           that.setData({ dataList: result.data.dataList })
           that.setData({
@@ -344,6 +376,8 @@ function bindData(that, cb) {
         }
         initData(that)
         typeof cb == 'function' && cb()
+
+        message.loaded()
       })
     } else {
       setTimeout(function () {

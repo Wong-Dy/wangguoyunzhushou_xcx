@@ -19,7 +19,8 @@
     "pages/group/join/join",
     "pages/gameaccount/gameaccount",
     "pages/group/setting/setting",
-    "pages/group/edit/edit"
+    "pages/group/edit/edit",
+    "pages/group/detail/detail"
   ],
   "tabBar": {
     "color": "#000000",

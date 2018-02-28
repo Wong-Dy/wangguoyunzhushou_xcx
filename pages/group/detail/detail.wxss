@@ -1,0 +1,40 @@
+/* pages/group/detail/detail.wxss */
+
+page {
+  height: 100%;
+  background-color: white;
+}
+
+.content {
+  height: 100%;
+}
+
+.group-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 15px;
+}
+
+.group-info .notice {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.master-info{
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.master-info .left-info{
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.master-info .updateTime{
+  color: darkgray;
+  font-size: 14px;
+}

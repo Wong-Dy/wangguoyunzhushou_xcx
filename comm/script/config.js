@@ -18,20 +18,22 @@ module.exports = {
   storageKey: {
     userSetting: 'user_setting',
     groupSetting: 'group_setting',
-    userGameInfo: 'user_game_info'
+    userGameInfo: 'user_game_info',
+    userGameGroupInfo: 'user_game_group_info'
+    
   },
   city: '',
   count: 20,
   baiduAK: 'Y1R5guY8Y2GNRdDpLz7SUeM3QgADAXec',
   apiList: {
-    // run: 'https://ww1.isaihu.com/api/applet/wx?account=wx_xcx',
-    // auth: 'https://ww1.isaihu.com/api/applet/wx/auth?system=21',
+    run: 'https://ww1.isaihu.com/api/applet/wx?account=wx_xcx',
+    auth: 'https://ww1.isaihu.com/api/applet/wx/auth?system=21',
 
-    run: 'http://192.168.1.107:8081/api/applet/wx?account=wx_xcx',
-    auth: 'http://192.168.1.107:8081//api/applet/wx/auth?system=21',
+    // run: 'http://192.168.1.107:8081/api/applet/wx?account=wx_xcx',
+    // auth: 'http://192.168.1.107:8081//api/applet/wx/auth?system=21',
 
-    run: 'http://192.168.2.102:8301/api/applet/wx?account=wx_xcx',
-    auth: 'http://192.168.2.102:8301//api/applet/wx/auth?system=21'
+    // run: 'http://192.168.2.102:8301/api/applet/wx?account=wx_xcx',
+    // auth: 'http://192.168.2.102:8301//api/applet/wx/auth?system=21'
   },
   bannerList: [
     { type: 'image', id: 0, imgUrl: distPath + '/images/banner_1.png' }

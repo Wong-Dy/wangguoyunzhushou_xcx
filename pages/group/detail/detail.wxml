@@ -1,0 +1,14 @@
+<view class='content'>
+
+  <view class='group-info'>
+    <view class='master-info'>
+      <image src='{{groupInfo.masterWxHeadUrl}}' style='width:40px' mode='widthFix'></image>
+      <view class='left-info'>
+        <text class='name'>{{groupInfo.masterName}}</text>
+        <text class='updateTime'>{{groupInfo.updateTime}}</text>
+      </view>
+    </view>
+    <text class='notice'>{{groupInfo.groupNotice ? groupInfo.groupNotice : '暂无公告'}}</text>
+  </view>
+
+</view>
