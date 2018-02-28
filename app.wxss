@@ -12,6 +12,7 @@ page{
 }
 
 .submit-btn{
+  font-size:15px;
   color:white;
   background-color: deepskyblue;
   margin: 0px 15px;

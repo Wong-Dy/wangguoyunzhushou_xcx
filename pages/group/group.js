@@ -104,10 +104,15 @@ Page({
     var that = this
 
     var actionList = []
+
+    actionList.push('邀请码')
+
     if (that.data.groupMaster == that.data.groupUserId) {
       actionList.push('编辑')
       actionList.push('设置')
     }
+
+    actionList.push('右上角转发邀请成员')
 
     if (actionList.length < 1)
       return
@@ -124,6 +129,24 @@ Page({
         } else if (actionName == '设置') {
           wx.navigateTo({
             url: 'setting/setting',
+          })
+        } else if (actionName == '邀请码') {
+          api.getGroupInviteCode(function (result) {
+            if (result.errcode == 1 && result.data.code) {
+              wx.showModal({
+                title: '邀请更多成员加入吧',
+                content: result.data.code,
+                confirmText: '复制',
+                showCancel: false,
+                success: function (res) {
+                  wx.setClipboardData({
+                    data: '邀请码:' + result.data.code + ' 微信小程序搜索:王国云助手,点击联盟加入,输入邀请码',
+                    success: function (res) {
+                    }
+                  })
+                }
+              })
+            }
           })
         }
       }

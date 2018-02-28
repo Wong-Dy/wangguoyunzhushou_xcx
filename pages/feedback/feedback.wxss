@@ -37,5 +37,5 @@ page {
   margin: 0 15px;
   background-color: #ff2d2d;
   color: #fff;
-  font-size: 35rpx;
+  font-size:15px;
 }
