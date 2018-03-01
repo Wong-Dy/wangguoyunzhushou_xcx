@@ -382,6 +382,15 @@ function leaveGroup(cb) {
 
   return runRequest(json, cb)
 }
+function getGroupQrCode(cb) {
+  var json = JSON.stringify({
+    cmd: "getGroupQrCode"
+  })
+
+  return runRequest(json, cb)
+}
+
+
 
 function runRequest(json, cb) {
   var sessionId = wx.getStorageSync('thirdSessionId')
@@ -498,5 +507,6 @@ module.exports = {
   updateGroupLevel: updateGroupLevel,
   deleteGroupMember: deleteGroupMember,
   abdicateGroupMaster: abdicateGroupMaster,
-  leaveGroup: leaveGroup
+  leaveGroup: leaveGroup,
+  getGroupQrCode: getGroupQrCode
 }

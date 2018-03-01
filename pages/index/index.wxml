@@ -14,16 +14,16 @@
     <view class='line-default'></view>
 
     <view class='current-time-view'>
-      <image src='../../dist/images/current_time.png' mode='widthFix' style='width:22px'></image>
+      <image src='../../dist/images/current_time.png' style='width:22px;height:22px;'></image>
       <text class='current-time'>{{currentTime}}</text>
     </view>
 
     <view class='count-down-view'>
-      <image src='../../dist/images/count_down.png' mode='widthFix' style='width:45px'></image>
+      <image src='../../dist/images/count_down.png' style='width:45px;height:45px;'></image>
       <text class='count-down'>{{countDown}}</text>
     </view>
     <view class='last-time-view'>
-      <image src='../../dist/images/last_time.png' mode='widthFix' style='width:22px'></image>
+      <image src='../../dist/images/last_time.png' style='width:22px;height:22px;'></image>
       <text class='last-time'>{{lastTime}}</text>
     </view>
 

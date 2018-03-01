@@ -170,13 +170,14 @@ page {
 }
 
 .group-info-content {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 .group-info-content .top1 {
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .group-info-content .top2 {

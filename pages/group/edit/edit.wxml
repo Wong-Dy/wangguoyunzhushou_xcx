@@ -3,7 +3,7 @@
     <view class="list-item">
       <view class='list-item-group'>
         <text class="list-item-text">联盟名称</text>
-        <input type='text' name="name" class="item-input" placeholder='联盟名称' value='{{name}}' maxlength='20'/>
+        <input type='text' name="name" class="item-input" placeholder='联盟名称' value='{{name}}' maxlength='12'/>
       </view>
     </view>
     <view class="list-item">

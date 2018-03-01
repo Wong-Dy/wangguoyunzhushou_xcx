@@ -1,0 +1,47 @@
+<!--pages/discover/discover.wxml-->
+<view class='content'>
+
+  <view class='list-box'>
+    <view class='list-item' catchtap='gamebbsTap'>
+      <view class='item-left'>
+        <image src='../../dist/images/discover/game_bbs.png' style='width:25px' mode='widthFix'></image>
+        <text>王国圈</text>
+      </view>
+      <view class='item-right'>
+        <image src='../../dist/images/ic_arrow_right1.png' style='width:17px' mode='widthFix'></image>
+      </view>
+    </view>
+
+    <view class='list-item item-margin item-group-one' catchtap='scanTap'>
+      <view class='item-left'>
+        <image src='../../dist/images/discover/scan.png' style='width:25px' mode='widthFix'></image>
+        <text>扫一扫</text>
+      </view>
+      <view class='item-right'>
+        <image src='../../dist/images/ic_arrow_right1.png' style='width:17px' mode='widthFix'></image>
+      </view>
+    </view>
+
+    <view class='item-group item-margin'>
+      <view class='list-item item-group-first' catchtap='activityTap'>
+        <view class='item-left'>
+          <image src='../../dist/images/discover/activity.png' style='width:25px' mode='widthFix'></image>
+          <text>活动</text>
+        </view>
+        <view class='item-right'>
+          <image src='../../dist/images/ic_arrow_right1.png' style='width:17px' mode='widthFix'></image>
+        </view>
+      </view>
+      <view class='item-group-line'></view>
+      <view class='list-item item-group-last' catchtap='marketTap'>
+        <view class='item-left'>
+          <image src='../../dist/images/discover/market.png' style='width:25px' mode='widthFix'></image>
+          <text>市场</text>
+        </view>
+        <view class='item-right'>
+          <image src='../../dist/images/ic_arrow_right1.png' style='width:17px' mode='widthFix'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

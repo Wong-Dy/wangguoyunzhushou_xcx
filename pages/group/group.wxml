@@ -3,7 +3,7 @@
   <block wx:if='{{dataList.length > 0}}'>
     <view class="group-info" bindtap='groupInfoTap'>
       <view class='group-info-left'>
-        <image src="../../dist/images/group_default.jpg" style='width:40px' mode='widthFix'></image>
+        <image src="../../dist/images/group_default.jpg" style='width:40px;height:40px'></image>
         <view class='group-info-content'>
           <text class='top1'>{{groupName}}</text>
           <text class='top2'>成员：{{dataList.length}}</text>

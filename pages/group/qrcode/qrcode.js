@@ -1,8 +1,11 @@
-// pages/group/detail/detail.js
+// pages/group/qrcode/qrcode.js
 
 const app = getApp()
 var api = app.api
 var message = app.message
+var config = app.config
+var QR = require("../../../utils/wxqrcode.js");
+var util = require('../../../utils/util.js')
 
 Page({
 
@@ -10,7 +13,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    imgData: "",
+    imageDetail: {},
+    qrDesc: '扫一扫上面的二维码图案，加入联盟',
+    qrcStr: ''
   },
 
   /**
@@ -18,14 +24,29 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+
+    var viewWidth = wx.getSystemInfoSync().windowWidth / 1.5,
+      viewHeight = viewWidth;
+
+    var imageDetail = {
+      width: viewWidth,
+      height: viewHeight
+    }
+
+    that.setData({
+      imageDetail: imageDetail
+    })
+
     bindData(that)
+    init(that)
   },
   qrcodeTap: function (e) {
-    wx.navigateTo({
-      url: '../qrcode/qrcode',
+    var that = this
+    message.loading()
+    init(that, function () {
+      message.loaded()
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -75,6 +96,20 @@ Page({
 
   }
 })
+
+function init(that, cb) {
+  api.getGroupQrCode(function (data) {
+    if (data.errcode == 1 && data.data && data.data.qrcode) {
+      that.setData({ qrcStr: data.data.qrcode })
+
+      var imgData = QR.createQrCodeImg(that.data.qrcStr);
+      that.setData({ imgData: imgData })
+    }
+    typeof cb == 'function' && cb()
+  })
+
+
+}
 
 function bindData(that) {
   message.loading()

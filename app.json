@@ -20,7 +20,9 @@
     "pages/gameaccount/gameaccount",
     "pages/group/setting/setting",
     "pages/group/edit/edit",
-    "pages/group/detail/detail"
+    "pages/group/detail/detail",
+    "pages/discover/discover",
+    "pages/group/qrcode/qrcode"
   ],
   "tabBar": {
     "color": "#000000",
@@ -39,6 +41,12 @@
         "iconPath": "dist/images/icon/tabbar/group.png",
         "selectedIconPath": "dist/images/icon/tabbar/group_back.png",
         "text": "联盟"
+      },
+      {
+        "pagePath": "pages/discover/discover",
+        "iconPath": "dist/images/icon/tabbar/discover.png",
+        "selectedIconPath": "dist/images/icon/tabbar/discover_back.png",
+        "text": "发现"
       },
       {
         "pagePath": "pages/mine/mine",

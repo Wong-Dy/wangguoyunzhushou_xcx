@@ -29,6 +29,7 @@ page {
 }
 
 .master-info .left-info{
+  flex: 1;
   display: flex;
   flex-direction: column;
   margin-left: 10px;
@@ -37,4 +38,10 @@ page {
 .master-info .updateTime{
   color: darkgray;
   font-size: 14px;
+}
+
+.right-info{
+  display: flex;
+  align-items: center;
+  padding: 5px 0 5px 15px;
 }

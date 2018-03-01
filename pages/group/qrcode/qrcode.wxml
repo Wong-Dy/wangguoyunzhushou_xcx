@@ -1,0 +1,18 @@
+<view class="content">
+  <view class='code-box-view'>
+
+    <view class="group-info" style="width:{{ imageDetail.width }}px;">
+      <view class='group-info-left'>
+        <image src="../../../dist/images/group_default.jpg" style='width:50px;height:50px'></image>
+        <view class='group-info-content'>
+          <text class='top1'>{{groupInfo.groupName}}</text>
+          <text class='top2'>成员：{{groupInfo.memberSum}}</text>
+        </view>
+      </view>
+    </view>
+
+    <image class='code-image' src='{{imgData}}' bindload="imageLoad" style="width:{{ imageDetail.width }}px; height:{{ imageDetail.height }}px;" catchtap='qrcodeTap'></image>
+    <text class='code-bottom-text' hidden='{{imgData == ""}}'>{{qrDesc}}</text>
+  </view>
+
+</view>
