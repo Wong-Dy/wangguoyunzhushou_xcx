@@ -1,0 +1,27 @@
+<view class='content-box'>
+  <form bindsubmit="formSubmit">
+    <view class='text-box'>
+      <textarea class='content' name='content' placeholder='你此刻想说的...' placeholder-style='font-size:14px;' maxlength='500'></textarea>
+    </view>
+    <view class='photo-box'>
+      <view class='list-box'>
+        <view class='list-item-first' bindtap='addphotoTap' style='width:{{photoWidth}}px;height:{{photoWidth}}px;'>
+          <image src='../../../../dist/images/plus_hui.png'></image>
+          <text>添加图片</text>
+        </view>
+        <block wx:for="{{photoList}}" wx:for-index='index' wx:for-item='item' wx:key='key'>
+          <view class='list-item'>
+            <view class='photo-wrap'>
+              <image class='close' src='../../../../dist/images/close_white.png' bindtap='closePhotoTap' data-index='{{index}}'></image>
+
+              <image src='{{item}}' style='width:{{photoWidth}}px; height:{{photoWidth}}px;'></image>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <button formType="submit" class="circle-float"><image src='../../../../dist/images/icon/gamebbs/confirm.png' style='width:22px;height:22px;'></image></button>
+  </form>
+
+</view>

@@ -2,6 +2,7 @@
 const app = getApp()
 var api = app.api
 var message = app.message
+var config = app.config
 
 Page({
   /**
@@ -51,20 +52,23 @@ Page({
     console.log('group-onShow')
 
     var that = this
-    if (that.data.readyUpdate) {
+
+    var m_readyUpdate = wx.getStorageSync(config.storageKey.refreshGroupList)
+
+    if (that.data.readyUpdate || m_readyUpdate) {
       bindData(that)
     }
 
     that.setData({ readyUpdate: false })
-
+    wx.setStorageSync(config.storageKey.refreshGroupList, false)
   },
   onLoad: function (options) {
     var that = this
-
+    console.log(options)
     message.loading()
     bindData(that, function () {
       if (options && options.type && options.type == '1') {
-        if (dataList.length > 0)
+        if (that.data.dataList.length > 0)
           return
         wx.showModal({
           title: options.gname,
@@ -313,12 +317,12 @@ Page({
           })
 
         } else if (actionName == '退出联盟') {
-          if (that.data.dataList.length == 1){
+          if (that.data.dataList.length == 1) {
             message.modal2('确认解散联盟？', function (res) {
               if (res.confirm) {
                 api.leaveGroup(function (result) {
                   if (result && result.errcode == 1) {
-                    bindData(that,function(){
+                    bindData(that, function () {
                       that.setData({ disabled: false })
                     })
                     message.modal('已退联盟')
@@ -355,7 +359,7 @@ function bindData(that, cb) {
     if (data && data.id > 0) {
       api.getUserGroupList(function (result) {
 
-        if (result && result.errcode == 1 && result.data.dataList) {
+        if (result && result.errcode == 1 && result.data && result.data.dataList) {
           that.setData({ dataList: result.data.dataList })
           that.setData({
             groupMaster: result.data.master,

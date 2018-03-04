@@ -1,0 +1,69 @@
+<!--pages/discover/gamebbs/gamebbs.wxml-->
+<view class='content'>
+
+  <view class='circle-float' catchtap='releaseTap'>
+    <image src='../../../dist/images/icon/gamebbs/release.png' style='width:25px;height:25px;'></image>
+  </view>
+
+  <view wx:if="{{dataList.length > 0}}" class='top-box'>
+    <view class='order-view'>
+      <text class='desc'>按时间</text>
+      <image class='more-img right-img' src='../../../dist/images/icon/gamebbs/more.png' style='width:18px;height:18px;'></image>
+    </view>
+  </view>
+
+  <view wx:if="{{dataList.length > 0}}" class='list-box' onReachBottom="bindDownLoad">
+    <block wx:for="{{dataList}}" wx:for-index="index" wx:for-item="item" wx:key="key">
+      <view class='list-item'>
+        <view class='item-left'>
+          <image src='{{item.userHead}}' style='width:40px;height:40px;'></image>
+        </view>
+        <view class='item-right'>
+          <view class='item-right-top'>
+            <text>{{item.userName}}</text>
+            <image class='right-img' src='../../../dist/images/icon/gamebbs/delete.png' style='width:18px;height:18px;'></image>
+          </view>
+          <view class='item-content'>
+            <text class='content'>{{item.content}}</text>
+          </view>
+          <view class='item-photos'>
+            <block wx:for='{{item.photos}}' wx:for-index='photoindex' wx:for-item='photoitem' wx:key='photokey'>
+              <image wx:if="{{item.photos.length == 1}}" src='{{photoitem}}' style='margin-left:0px;width:{{firstPhotoWidth}}px;' mode='widthFix' data-pindex='{{index}}' data-index='{{photoindex}}' catchtap='previewImageTap'></image>
+              <image wx:else src='{{photoitem}}' style='width:{{photosWidth}}px;height:{{photosWidth}}px;' mode='center' data-pindex='{{index}}' data-index='{{photoindex}}' catchtap='previewImageTap'></image>
+            </block>
+          </view>
+          <view class='item-time'>
+            {{item.time}}
+          </view>
+          <view class='item-bottom'>
+            <view class='btn-img'>
+              <image src='../../../dist/images/icon/gamebbs/like.png' style='width:15px;height:15px;'></image>
+              <text>12</text>
+            </view>
+            <view class='btn-img'>
+              <image src='../../../dist/images/icon/gamebbs/comment.png' style='width:15px;height:15px;'></image>
+              <text>12</text>
+
+            </view>
+
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <view class='view-bottom'>
+      <import src="../../../component/loading/more/more.wxml" />
+      <template is="loadingMore" data="{{hasMore: hasMore}}" />
+    </view>
+  </view>
+</view>
+
+<block wx:if="{{!hasData}}">
+  <view class="not-data-tip">
+    <image src="../../../dist/images/no_data.png" mode='widthFix' style='width:380rpx' />
+    <text class='not-data-tip-text'>暂时木有发圈，快来试试~~</text>
+  </view>
+</block>
+<block wx:else>
+  <view class="not-data-tip"></view>
+</block>

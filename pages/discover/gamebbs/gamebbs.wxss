@@ -1,0 +1,137 @@
+/* pages/discover/gamebbs/gamebbs.wxss */
+
+page {
+  height: 100%;
+  background-color: #f8f8f8;
+}
+
+.content {
+  height: 100%;
+}
+
+.circle-float {
+  color: #fff;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 80rpx;
+  right: 15px;
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+  background: cornflowerblue;
+  opacity: 0.5;
+}
+
+.top-box {
+  padding: 10px 15px;
+  background-color: white;
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.order-view {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.right-img {
+  padding-left: 10px;
+}
+
+.list-box {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0px;
+  background-color: white;
+}
+
+.list-item {
+  display: flex;
+  padding: 10px 15px;
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.item-left {
+  display: flex;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.item-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-right-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+}
+
+.item-content {
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+.item-photos{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.item-photos image{
+  margin: 0px 5px 5px 0;
+}
+
+
+.item-time {
+  margin-top: 5px;
+  font-size: 14px;
+  color: darkgray;
+}
+
+.item-bottom {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.item-bottom .btn-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e5e9ef;
+  border: 0px;
+  width: 45px;
+  height: 28px;
+  border-radius: 1px;
+  margin-left: 10px;
+}
+
+.item-bottom .btn-img text {
+  margin-left: 3px;
+  font-size: 12px;
+  color: #707070;
+}
+
+.not-data-tip {
+  width: 100%;
+  z-index: -100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top:25%;
+}
+
+.not-data-tip text {
+  font-size: 14px;
+  margin-top: 10px;
+  color: dimgray;
+}

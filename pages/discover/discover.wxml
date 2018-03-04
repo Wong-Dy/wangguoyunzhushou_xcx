@@ -14,32 +14,32 @@
 
     <view class='list-item item-margin item-group-one' catchtap='scanTap'>
       <view class='item-left'>
-        <image src='../../dist/images/discover/scan.png' style='width:25px' mode='widthFix'></image>
+        <image src='../../dist/images/discover/scan.png' style='width:25px;height:25px'></image>
         <text>扫一扫</text>
       </view>
       <view class='item-right'>
-        <image src='../../dist/images/ic_arrow_right1.png' style='width:17px' mode='widthFix'></image>
+        <image src='../../dist/images/ic_arrow_right1.png' style='width:17px;height:17px'></image>
       </view>
     </view>
 
     <view class='item-group item-margin'>
       <view class='list-item item-group-first' catchtap='activityTap'>
         <view class='item-left'>
-          <image src='../../dist/images/discover/activity.png' style='width:25px' mode='widthFix'></image>
+          <image src='../../dist/images/discover/activity.png' style='width:25px;height:25px'></image>
           <text>活动</text>
         </view>
         <view class='item-right'>
-          <image src='../../dist/images/ic_arrow_right1.png' style='width:17px' mode='widthFix'></image>
+          <image src='../../dist/images/ic_arrow_right1.png' style='width:17px;height:17px'></image>
         </view>
       </view>
       <view class='item-group-line'></view>
       <view class='list-item item-group-last' catchtap='marketTap'>
         <view class='item-left'>
-          <image src='../../dist/images/discover/market.png' style='width:25px' mode='widthFix'></image>
+          <image src='../../dist/images/discover/market.png' style='width:25px;height:25px'></image>
           <text>市场</text>
         </view>
         <view class='item-right'>
-          <image src='../../dist/images/ic_arrow_right1.png' style='width:17px' mode='widthFix'></image>
+          <image src='../../dist/images/ic_arrow_right1.png' style='width:17px;height:17px'></image>
         </view>
       </view>
     </view>

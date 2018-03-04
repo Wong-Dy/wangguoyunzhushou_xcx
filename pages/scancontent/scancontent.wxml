@@ -1,0 +1,8 @@
+<view class='content'>
+
+  <view class='scan-content'>
+    <text>{{content}}</text>
+  </view>
+
+  
+</view>

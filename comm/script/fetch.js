@@ -295,7 +295,7 @@ function updateGroup(params, cb) {
   var json = JSON.stringify(params)
 
   return runRequest(json, cb)
-} 
+}
 function updateGroupSetting(params, cb) {
   params.cmd = "updateGroupSetting"
   var json = JSON.stringify(params)
@@ -305,6 +305,14 @@ function updateGroupSetting(params, cb) {
 function getUserGroup(cb) {
   var json = JSON.stringify({
     cmd: "getUserGroup"
+  })
+
+  return runRequest(json, cb)
+}
+function getUserGroupById(groupId, cb) {
+  var json = JSON.stringify({
+    cmd: "getUserGroup",
+    groupId: groupId
   })
 
   return runRequest(json, cb)
@@ -390,6 +398,31 @@ function getGroupQrCode(cb) {
   return runRequest(json, cb)
 }
 
+function scanCode(code, cb) {
+  var json = JSON.stringify({
+    cmd: "scanCode",
+    code: code
+  })
+
+  return runRequest(json, cb)
+}
+
+function addGameBbs(params, cb) {
+  params.cmd = 'addGameBbs'
+  var json = JSON.stringify(params)
+
+  return runRequest(json, cb)
+}
+function getGameBbs(start, count, orderType, cb, fail_cb) {
+  var json = JSON.stringify({
+    cmd: "getGameBbs",
+    pageIndex: start,
+    pageSize: count,
+    orderType: orderType
+  })
+
+  return runRequest(json, cb)
+}
 
 
 function runRequest(json, cb) {
@@ -499,6 +532,7 @@ module.exports = {
   updateGroup: updateGroup,
   updateGroupSetting: updateGroupSetting,
   getUserGroup: getUserGroup,
+  getUserGroupById: getUserGroupById,
   getUserGroupList: getUserGroupList,
   getGroupInviteCode: getGroupInviteCode,
   joinGroup: joinGroup,
@@ -508,5 +542,8 @@ module.exports = {
   deleteGroupMember: deleteGroupMember,
   abdicateGroupMaster: abdicateGroupMaster,
   leaveGroup: leaveGroup,
-  getGroupQrCode: getGroupQrCode
+  getGroupQrCode: getGroupQrCode,
+  scanCode: scanCode,
+  addGameBbs: addGameBbs,
+  getGameBbs: getGameBbs
 }

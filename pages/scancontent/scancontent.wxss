@@ -1,0 +1,18 @@
+/* pages/scancontent/scancontent.wxss */
+
+page {
+  height: 100%;
+}
+
+.content {
+  height: 100%;
+}
+
+.scan-content {
+  padding: 10px 15px;
+}
+
+.scan-content text {
+  font-size: 17px;
+  word-break:break-all;
+}

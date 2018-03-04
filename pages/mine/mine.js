@@ -1,7 +1,7 @@
 var app = getApp()
 var config = require('../../comm/script/config.js')
 var api = require('../../comm/script/fetch.js')
-
+var message = app.message
 
 Page({
   data: {
@@ -25,6 +25,8 @@ Page({
     }, 1500);
   },
   recharge: function () {
+    message.modal('暂未开通，请联系微信：wdy78925880')
+    return
     wx.navigateTo({
       url: '../recharge/recharge'
     })

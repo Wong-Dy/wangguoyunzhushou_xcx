@@ -22,7 +22,11 @@
     "pages/group/edit/edit",
     "pages/group/detail/detail",
     "pages/discover/discover",
-    "pages/group/qrcode/qrcode"
+    "pages/group/qrcode/qrcode",
+    "pages/group/groupjoin/groupjoin",
+    "pages/scancontent/scancontent",
+    "pages/discover/gamebbs/gamebbs",
+    "pages/discover/gamebbs/addbbs/addbbs"
   ],
   "tabBar": {
     "color": "#000000",

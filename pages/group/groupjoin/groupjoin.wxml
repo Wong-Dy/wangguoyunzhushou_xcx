@@ -1,0 +1,23 @@
+<view class='content'>
+  <view class="group-info" bindtap='groupInfoTap'>
+    <view class='group-info-left'>
+      <image src="../../../dist/images/group_default.jpg" style='width:50px;height:50px'></image>
+      <view class='group-info-content'>
+        <text class='top1'>{{groupInfo.groupName}}</text>
+        <text class='top2'>成员：{{groupInfo.memberSum}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='master-info'>
+    <image src='{{groupInfo.masterWxHeadUrl}}' style='width:50px;height:50px;'></image>
+    <view class='left-info'>
+      <text class='name'>{{groupInfo.masterName}}</text>
+      <text class='updateTime'>阶级：盟主</text>
+    </view>
+  </view>
+
+  <view class='bottom-view'>
+    <button type="primary" class='joinBtn' catchtap='joinTap'>加入联盟</button>
+  </view>
+</view>
