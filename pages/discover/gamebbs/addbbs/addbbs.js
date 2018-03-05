@@ -89,7 +89,6 @@ Page({
         filePath: photoList[index],
         name: 'file',
         success: function (fileRes) {
-          wx.hideLoading()
           console.log(fileRes)
           var data = JSON.parse(fileRes.data);
           console.log(data)
@@ -142,6 +141,7 @@ function addBbs(that, form, cb) {
   }
 
   api.addGameBbs(params, function (result) {
+    message.loaded()
     if (result.errcode == 1) {
       message.show('发布成功')
       setTimeout(function () {

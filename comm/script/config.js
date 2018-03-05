@@ -20,7 +20,8 @@ module.exports = {
     groupSetting: 'group_setting',
     userGameInfo: 'user_game_info',
     userGameGroupInfo: 'user_game_group_info',
-    refreshGroupList: 'refresh_group_list'
+    refreshGroupList: 'refresh_group_list',
+    gameBbsList: 'game_bbs_list'
     
   },
   city: '',

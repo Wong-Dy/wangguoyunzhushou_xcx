@@ -26,7 +26,8 @@
     "pages/group/groupjoin/groupjoin",
     "pages/scancontent/scancontent",
     "pages/discover/gamebbs/gamebbs",
-    "pages/discover/gamebbs/addbbs/addbbs"
+    "pages/discover/gamebbs/addbbs/addbbs",
+    "pages/discover/gamebbs/detail/detail"
   ],
   "tabBar": {
     "color": "#000000",

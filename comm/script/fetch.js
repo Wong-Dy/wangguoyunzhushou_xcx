@@ -423,7 +423,22 @@ function getGameBbs(start, count, orderType, cb, fail_cb) {
 
   return runRequest(json, cb)
 }
+function getGameBbsDetail(bbsId, cb) {
+  var json = JSON.stringify({
+    cmd: "getGameBbsDetail",
+    bbsId: bbsId
+  })
 
+  return runRequest(json, cb)
+}
+function likeGameBbs(bbsId, cb) {
+  var json = JSON.stringify({
+    cmd: "likeGameBbs",
+    bbsId: bbsId
+  })
+
+  return runRequest(json, cb)
+}
 
 function runRequest(json, cb) {
   var sessionId = wx.getStorageSync('thirdSessionId')
@@ -545,5 +560,7 @@ module.exports = {
   getGroupQrCode: getGroupQrCode,
   scanCode: scanCode,
   addGameBbs: addGameBbs,
-  getGameBbs: getGameBbs
+  getGameBbs: getGameBbs,
+  getGameBbsDetail: getGameBbsDetail,
+  likeGameBbs: likeGameBbs
 }
