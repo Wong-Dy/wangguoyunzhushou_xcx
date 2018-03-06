@@ -9,7 +9,6 @@
         <view class='item-right'>
           <view class='item-right-top'>
             <text>{{item.userName}}</text>
-            <image class='right-img' src='{{distPath}}/images/icon/gamebbs/delete.png' style='width:18px;height:18px;'></image>
           </view>
           <view class='item-content'>
             <text class='content'>{{item.content}}</text>
@@ -49,6 +48,6 @@
 </view>
 
 <view class="release">
-  <textarea class="text" placeholder-class="input_null" fixed="true" maxlength="-1" show-confirm-bar="false" cursor-spacing="15" auto-height="true" focus="{{releaseFocus}}" placeholder="回复 {{releaseName}}" catchtap='bindReply'></textarea>
-  <view class="submit">发送</view>
+   <textarea class="text" placeholder-class="input_null" fixed="true" maxlength="150" show-confirm-bar="{{1==2}}" cursor-spacing="15" auto-height="true" focus="{{releaseFocus}}" placeholder="留下你的评论..." catchtap='bindReply' bindinput='commentInputTap'></textarea> 
+  <view class="submit" catchtap='submitCommentTap'><image src='{{distPath}}/images/icon/gamebbs/send_white.png' style='width:18px;height:18px'></image></view>
 </view>

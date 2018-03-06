@@ -439,6 +439,29 @@ function likeGameBbs(bbsId, cb) {
 
   return runRequest(json, cb)
 }
+function commentGameBbs(bbsId, content, type, extend, cb) {
+  if (!extend) {
+    extend = {}
+  }
+
+  extend.cmd = 'commentGameBbs'
+  extend.bbsId = bbsId
+  extend.content = content
+  extend.type = type
+  var json = JSON.stringify(extend)
+
+  return runRequest(json, cb)
+}
+function getGameBbsComment(start, count, bbsId, cb, fail_cb) {
+  var json = JSON.stringify({
+    cmd: "getGameBbsComment",
+    pageIndex: start,
+    pageSize: count,
+    bbsId: bbsId
+  })
+
+  return runRequest(json, cb)
+}
 
 function runRequest(json, cb) {
   var sessionId = wx.getStorageSync('thirdSessionId')
@@ -562,5 +585,7 @@ module.exports = {
   addGameBbs: addGameBbs,
   getGameBbs: getGameBbs,
   getGameBbsDetail: getGameBbsDetail,
-  likeGameBbs: likeGameBbs
+  likeGameBbs: likeGameBbs,
+  commentGameBbs: commentGameBbs,
+  getGameBbsComment: getGameBbsComment
 }

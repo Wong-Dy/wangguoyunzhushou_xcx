@@ -125,30 +125,32 @@ page {
   left: 0;
   bottom: 0;
   width: 100%;
-  padding: 18rpx 0 18rpx 30rpx;
-  background-color: #f7f8f7;
-  font-size: 28rpx;
+  padding: 6px;
+  background-color: white;
   z-index: 999;
   border-top: 1px solid #f4f4f4;
 }
 
 .release .text {
-  width: 604rpx;
-  min-height: 34rpx;
+  flex:1;
   max-height: 102rpx; /*最多显示三行*/
-  border-width: 15rpx 20rpx; /*使用padding与预期留白不一致，故使用border*/
-  border-style: solid;
-  border-color: #fff;
-  line-height: 34rpx;
   font-size: 28rpx;
   background-color: #fff;
   border-radius: 4rpx;
+  border: 1px solid #f4f4f4;
+  padding: 14rpx;
 }
 
 .release .submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 116rpx;
   height: 64rpx;
   line-height: 64rpx;
   text-align: center;
   color: #6c0;
+  background-color: orange;
+  border-radius: 2px;
+  margin-left:5px;
 }
