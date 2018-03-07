@@ -34,11 +34,11 @@ module.exports = {
     // run: 'http://192.168.1.107:8081/api/applet/wx?account=wx_xcx',
     // auth: 'http://192.168.1.107:8081//api/applet/wx/auth?system=21',
 
-    run: 'http://192.168.2.102:8301/api/applet/wx?account=wx_xcx',
-    auth: 'http://192.168.2.102:8301//api/applet/wx/auth?system=21',
+    // run: 'http://192.168.2.102:8301/api/applet/wx?account=wx_xcx',
+    // auth: 'http://192.168.2.102:8301//api/applet/wx/auth?system=21',
 
     upGameBbsImgUrl: 'https://ww1.isaihu.com/api/upload/wx-gamebbs-img',
-    upGameBbsImgUrl: 'http://192.168.2.102:8301/api/upload/wx-gamebbs-img'
+    // upGameBbsImgUrl: 'http://192.168.2.102:8301/api/upload/wx-gamebbs-img'
   },
   bannerList: [
     { type: 'image', id: 0, imgUrl: distPath + '/images/banner_1.png' }

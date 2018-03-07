@@ -52,6 +52,7 @@ page {
 
 .group-info-content .top1 {
   font-size: 15px;
+  word-break:break-all;
 }
 
 .group-info-content .top2 {

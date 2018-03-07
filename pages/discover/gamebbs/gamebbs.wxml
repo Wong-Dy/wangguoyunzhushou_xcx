@@ -1,5 +1,5 @@
 <!--pages/discover/gamebbs/gamebbs.wxml-->
-<view class='content'>
+<view class='content-box'>
 
   <view class='circle-float' catchtap='releaseTap'>
     <image src='../../../dist/images/icon/gamebbs/release.png' style='width:25px;height:25px;'></image>

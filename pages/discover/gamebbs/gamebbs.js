@@ -117,7 +117,10 @@ Page({
 
     api.likeGameBbs(e.currentTarget.dataset.bbsid, function (result) {
       if (result.errcode == 1) {
-
+        wx.setStorage({
+          key: config.storageKey.gameBbsList,
+          data: that.data.dataList
+        })
       }
     })
   }

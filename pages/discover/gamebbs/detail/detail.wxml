@@ -1,6 +1,6 @@
-<view class='content'>
+<view class='content-box'>
 
-  <view wx:if="{{dataList.length > 0}}" class='list-box' onReachBottom="bindDownLoad">
+  <view wx:if="{{dataList.length > 0}}" class='list-box'>
     <block wx:for="{{dataList}}" wx:for-index="index" wx:for-item="item" wx:key="key">
       <view class='list-item'>
         <view class='item-left'>
@@ -40,14 +40,49 @@
       </view>
     </block>
 
+
+  </view>
+
+  <view class='comment-list-box'>
+    <view class='comment-list-item' wx:for="{{commentList}}" wx:for-index="index" wx:for-item="item" wx:key="key" data-index='{{index}}' bindtap='commentItemTap'>
+      <view class='comment-item-left'>
+        <image src="{{index==0 ? distPath + '/images/icon/gamebbs/comment.png' :''}}" style='width:18px;height:18px;'></image>
+      </view>
+      <view class='comment-item-center-right'>
+        <view class='comment-item-center'>
+          <image src='{{item.userHead}}' style='width:40px;height:40px;'></image>
+          <view class='center-right'>
+            <view class='center-right-top'>
+              <text>{{item.userName}}</text>
+              <view class='center-right-top-right'>
+                <text class='time'>{{item.time}}</text>
+              </view>
+            </view>
+            <view class='center-item-content'>
+              <text wx:if="{{item.type==0}}" class='content'>{{item.content}}</text>
+              <view wx:else>
+                <text class='replyUser'>{{'@ '+item.toUserName}}</text>
+                <text class='content'>{{'：'+item.content}}</text>
+              </view>
+
+            </view>
+          </view>
+        </view>
+
+      </view>
+    </view>
     <view class='view-bottom'>
       <import src="../../../../component/loading/more/more.wxml" />
       <template is="loadingMore" data="{{hasMore: hasMore}}" />
     </view>
   </view>
+
 </view>
 
 <view class="release">
-   <textarea class="text" placeholder-class="input_null" fixed="true" maxlength="150" show-confirm-bar="{{1==2}}" cursor-spacing="15" auto-height="true" focus="{{releaseFocus}}" placeholder="留下你的评论..." catchtap='bindReply' bindinput='commentInputTap'></textarea> 
-  <view class="submit" catchtap='submitCommentTap'><image src='{{distPath}}/images/icon/gamebbs/send_white.png' style='width:18px;height:18px'></image></view>
+  <textarea class="text" placeholder-class="input_null" fixed="true" maxlength="150" show-confirm-bar="{{1==2}}" cursor-spacing="15" auto-height="true" focus="{{releaseFocus}}" placeholder="{{replyName ? '回复 '+replyName:'期待你的评论...'}}" catchtap='bindReply'
+    bindinput='commentInputTap' value='{{commentContent}}'></textarea>
+  <view class="submit" catchtap='submitCommentTap'>
+    <image src='{{distPath}}/images/icon/gamebbs/send_white.png' style='width:18px;height:18px'></image>
+  </view>
 </view>

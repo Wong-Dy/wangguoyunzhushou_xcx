@@ -452,6 +452,15 @@ function commentGameBbs(bbsId, content, type, extend, cb) {
 
   return runRequest(json, cb)
 }
+function deleteGameBbsComment(commentId, cb) {
+
+  var json = JSON.stringify({
+    cmd: 'deleteGameBbsComment',
+    commentId: commentId
+  })
+
+  return runRequest(json, cb)
+}
 function getGameBbsComment(start, count, bbsId, cb, fail_cb) {
   var json = JSON.stringify({
     cmd: "getGameBbsComment",
@@ -587,5 +596,6 @@ module.exports = {
   getGameBbsDetail: getGameBbsDetail,
   likeGameBbs: likeGameBbs,
   commentGameBbs: commentGameBbs,
-  getGameBbsComment: getGameBbsComment
+  getGameBbsComment: getGameBbsComment,
+  deleteGameBbsComment: deleteGameBbsComment
 }

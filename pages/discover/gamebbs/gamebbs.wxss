@@ -5,7 +5,7 @@ page {
   background-color: #f8f8f8;
 }
 
-.content {
+.content-box {
   height: 100%;
 }
 
@@ -74,6 +74,12 @@ page {
 .item-content {
   margin-top: 5px;
   font-size: 15px;
+}
+
+.item-content .content{
+  margin-top: 5px;
+  font-size: 15px;
+  word-break: break-all;
 }
 
 .item-photos{

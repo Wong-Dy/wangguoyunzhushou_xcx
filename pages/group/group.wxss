@@ -50,6 +50,9 @@ page {
   display: flex;
   flex-direction: column;
   margin-left: 5px;
+  flex: 1;
+  word-break: break-all;
+  padding: 0 10px 0 5px;
 }
 
 .item-left-info .top1 {
@@ -178,6 +181,7 @@ page {
 
 .group-info-content .top1 {
   font-size: 15px;
+  word-break: break-all;
 }
 
 .group-info-content .top2 {
