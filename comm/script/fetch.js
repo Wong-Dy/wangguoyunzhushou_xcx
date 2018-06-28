@@ -14,18 +14,17 @@ JS返回错误代码说明:
 
 function auth(code, cb) {
   var sessionId = wx.getStorageSync('thirdSessionId');
-  // if (sessionId){
-  //   typeof cb == 'function' && cb(sessionId)
-  //   return;
-  // }
+
   wx.request({
     url: config.apiList.auth + "&sessionId=" + sessionId,
-    data: { code: code },
+    data: {
+      code: code
+    },
     method: 'post',
     header: {
       "Content-Type": "application/x-www-form-urlencoded"
     },
-    success: function (res) {
+    success: function(res) {
       if (!res) {
         message.error('服务器走神了', 5000)
         return;
@@ -38,7 +37,7 @@ function auth(code, cb) {
       wx.setStorageSync('thirdSessionId', res.data.data.sessionId)
       typeof cb == 'function' && cb(res.data.data.sessionId)
     },
-    fail: function () {
+    fail: function() {
       message.modal('网络开小差了')
       return null;
     }
@@ -58,13 +57,13 @@ function login(sessionId, encryptedData, iv, cb) {
   var dataBytes = crypto.charenc.UTF8.stringToBytes(json)
   var keyBytes = crypto.charenc.UTF8.stringToBytes(sessionId);
   var mode = new crypto.mode.ECB(crypto.pad.pkcs7);
-  json = crypto.AES.encrypt(dataBytes, keyBytes, {
+  var encryptJson = crypto.AES.encrypt(dataBytes, keyBytes, {
     mode: mode
   });
 
   wx.request({
     url: config.apiList.run + "&sessionId=" + sessionId,
-    data: json,
+    data: encryptJson,
     method: 'post',
     header: {
       "Content-Type": "application/x-www-form-urlencoded"
@@ -83,9 +82,9 @@ function login(sessionId, encryptedData, iv, cb) {
         wx.setStorageSync('loginTime', loginTime + 1)
         wx.removeStorageSync('thirdSessionId')
         wx.login({
-          success: function (loginRes) {
+          success: function (res) {
 
-            auth(loginRes.code, function (newSessionId) {
+            auth(res.code, function (newSessionId) {
               login(newSessionId, encryptedData, iv, cb)
 
             })
@@ -290,18 +289,21 @@ function createGroup(name, district, locationX, locationY, cb) {
 
   return runRequest(json, cb)
 }
+
 function updateGroup(params, cb) {
   params.cmd = "updateGroup"
   var json = JSON.stringify(params)
 
   return runRequest(json, cb)
 }
+
 function updateGroupSetting(params, cb) {
   params.cmd = "updateGroupSetting"
   var json = JSON.stringify(params)
 
   return runRequest(json, cb)
 }
+
 function getUserGroup(cb) {
   var json = JSON.stringify({
     cmd: "getUserGroup"
@@ -309,6 +311,7 @@ function getUserGroup(cb) {
 
   return runRequest(json, cb)
 }
+
 function getUserGroupById(groupId, cb) {
   var json = JSON.stringify({
     cmd: "getUserGroup",
@@ -317,6 +320,7 @@ function getUserGroupById(groupId, cb) {
 
   return runRequest(json, cb)
 }
+
 function getUserGroupList(cb) {
   var json = JSON.stringify({
     cmd: "getUserGroupList"
@@ -332,6 +336,7 @@ function getGroupInviteCode(cb) {
 
   return runRequest(json, cb)
 }
+
 function joinGroup(inviteCode, cb) {
   var json = JSON.stringify({
     cmd: "joinGroup",
@@ -340,6 +345,7 @@ function joinGroup(inviteCode, cb) {
 
   return runRequest(json, cb)
 }
+
 function shareJoinGroup(sendUserId, groupId, cb) {
   var json = JSON.stringify({
     cmd: "shareJoinGroup",
@@ -349,6 +355,7 @@ function shareJoinGroup(sendUserId, groupId, cb) {
 
   return runRequest(json, cb)
 }
+
 function sendJiJieNotice(toUserId, type, cb) {
   var json = JSON.stringify({
     cmd: "sendJiJieNotice",
@@ -358,6 +365,7 @@ function sendJiJieNotice(toUserId, type, cb) {
 
   return runRequest(json, cb)
 }
+
 function updateGroupLevel(memberUserId, level, cb) {
   var json = JSON.stringify({
     cmd: "updateGroupLevel",
@@ -367,6 +375,7 @@ function updateGroupLevel(memberUserId, level, cb) {
 
   return runRequest(json, cb)
 }
+
 function deleteGroupMember(memberUserId, cb) {
   var json = JSON.stringify({
     cmd: "deleteGroupMember",
@@ -375,6 +384,7 @@ function deleteGroupMember(memberUserId, cb) {
 
   return runRequest(json, cb)
 }
+
 function abdicateGroupMaster(memberUserId, cb) {
   var json = JSON.stringify({
     cmd: "abdicateGroupMaster",
@@ -383,6 +393,7 @@ function abdicateGroupMaster(memberUserId, cb) {
 
   return runRequest(json, cb)
 }
+
 function leaveGroup(cb) {
   var json = JSON.stringify({
     cmd: "leaveGroup"
@@ -390,6 +401,7 @@ function leaveGroup(cb) {
 
   return runRequest(json, cb)
 }
+
 function getGroupQrCode(cb) {
   var json = JSON.stringify({
     cmd: "getGroupQrCode"
@@ -413,6 +425,7 @@ function addGameBbs(params, cb) {
 
   return runRequest(json, cb)
 }
+
 function getGameBbs(start, count, orderType, cb, fail_cb) {
   var json = JSON.stringify({
     cmd: "getGameBbs",
@@ -423,6 +436,7 @@ function getGameBbs(start, count, orderType, cb, fail_cb) {
 
   return runRequest(json, cb)
 }
+
 function getGameBbsDetail(bbsId, cb) {
   var json = JSON.stringify({
     cmd: "getGameBbsDetail",
@@ -431,6 +445,7 @@ function getGameBbsDetail(bbsId, cb) {
 
   return runRequest(json, cb)
 }
+
 function likeGameBbs(bbsId, cb) {
   var json = JSON.stringify({
     cmd: "likeGameBbs",
@@ -439,6 +454,7 @@ function likeGameBbs(bbsId, cb) {
 
   return runRequest(json, cb)
 }
+
 function commentGameBbs(bbsId, content, type, extend, cb) {
   if (!extend) {
     extend = {}
@@ -452,6 +468,7 @@ function commentGameBbs(bbsId, content, type, extend, cb) {
 
   return runRequest(json, cb)
 }
+
 function deleteGameBbsComment(commentId, cb) {
 
   var json = JSON.stringify({
@@ -461,6 +478,7 @@ function deleteGameBbsComment(commentId, cb) {
 
   return runRequest(json, cb)
 }
+
 function getGameBbsComment(start, count, bbsId, cb, fail_cb) {
   var json = JSON.stringify({
     cmd: "getGameBbsComment",
@@ -480,32 +498,30 @@ function runRequest(json, cb) {
   var dataBytes = crypto.charenc.UTF8.stringToBytes(json)
   var keyBytes = crypto.charenc.UTF8.stringToBytes(sessionId);
   var mode = new crypto.mode.ECB(crypto.pad.pkcs7);
-  json = crypto.AES.encrypt(dataBytes, keyBytes, {
+  var encryptJson = crypto.AES.encrypt(dataBytes, keyBytes, {
     mode: mode
   });
 
   wx.request({
     url: config.apiList.run + "&sessionId=" + sessionId,
-    data: json,
+    data: encryptJson,
     method: 'post',
     header: {
       "Content-Type": "application/x-www-form-urlencoded"
     },
-    success: function (res) {
+    success: function(res) {
       if (!res) {
-        wx.showModal({
-          title: '提示',
-          content: '服务器走神了',
-          showCancel: false
-        })
-        wx.hideLoading()
-        wx.hideNavigationBarLoading()
+        message.error('服务器走神了', 5000)
         return;
       }
 
+      console.log('runRequest')
+      console.log(json)
+      console.log(res.data)
+
       if (res.data && res.data.errcode != 1 && res.data.errcode != 10111) {
         if (res.data.errcode == 30102) { //sessionId无效
-          setTimeout(function () {
+          setTimeout(function() {
             var runTime = wx.getStorageSync('runTime')
             if (runTime > 3) {
               message.modal('登录失败,请重新刷新首页')
@@ -513,8 +529,8 @@ function runRequest(json, cb) {
             }
             wx.setStorageSync('runTime', runTime + 1)
             wx.login({
-              success: function (loginRes) {
-                auth(loginRes.code, function (newSessionId) {
+              success: function(loginRes) {
+                auth(loginRes.code, function(newSessionId) {
                   runRequest(json, cb)
                 })
               }
@@ -539,7 +555,7 @@ function runRequest(json, cb) {
       typeof cb == 'function' && cb(res.data)
 
     },
-    fail: function () {
+    fail: function() {
       wx.showModal({
         title: '提示',
         content: '网络开小差了',

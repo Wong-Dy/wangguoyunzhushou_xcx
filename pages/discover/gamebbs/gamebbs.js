@@ -21,13 +21,15 @@ Page({
     hasData: false,
     readyUpdate: false
   },
-  onShow: function () {
+  onShow: function() {
     var that = this
 
     if (that.data.readyUpdate) {
-      that.setData({ page: 1 })
+      that.setData({
+        page: 1
+      })
       wx.showNavigationBarLoading()
-      bindData(this, function () {
+      bindData(this, function() {
         wx.stopPullDownRefresh()
 
         if (wx.pageScrollTo) {
@@ -38,40 +40,51 @@ Page({
       })
     }
 
-    that.setData({ readyUpdate: false })
+    that.setData({
+      readyUpdate: false
+    })
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this
     var windowWidth = wx.getSystemInfoSync().windowWidth
 
-    that.setData({ firstPhotoWidth: windowWidth / 2 })
-    that.setData({ secondPhotoWidth: windowWidth / 2 - 48 })
-    that.setData({ photosWidth: windowWidth / 3 - 33 })
+    that.setData({
+      firstPhotoWidth: windowWidth / 2
+    })
+    that.setData({
+      secondPhotoWidth: windowWidth / 2 - 48
+    })
+    that.setData({
+      photosWidth: windowWidth / 3 - 33
+    })
 
     message.loading()
     bindData(that)
   },
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     var that = this;
 
-    that.setData({ page: 1 })
+    that.setData({
+      page: 1
+    })
     wx.showNavigationBarLoading()
-    bindData(this, function () {
+    bindData(this, function() {
       wx.stopPullDownRefresh()
     })
   },
-  onReachBottom: function () {
+  onReachBottom: function() {
     var that = this;
 
     if (that.data.hasData) {
-      that.setData({ hasMore: true })
-      wx.showNavigationBarLoading()
-      bindData(this, function () {
+      that.setData({
+        hasMore: true
       })
+      wx.showNavigationBarLoading()
+      bindData(this, function() {})
     }
 
   },
-  previewImageTap: function (e) {
+  previewImageTap: function(e) {
     console.log(e)
     var index = e.currentTarget.dataset.index
     var pindex = e.currentTarget.dataset.pindex
@@ -84,20 +97,22 @@ Page({
     })
 
   },
-  itemTap: function (e) {
+  itemTap: function(e) {
     var that = this
     wx.navigateTo({
       url: 'detail/detail?index=' + e.currentTarget.dataset.index + '&bbsid=' + e.currentTarget.dataset.bbsid,
     })
   },
-  releaseTap: function (e) {
+  releaseTap: function(e) {
     var that = this
-    that.setData({ readyUpdate: true })
+    that.setData({
+      readyUpdate: true
+    })
     wx.navigateTo({
       url: 'addbbs/addbbs',
     })
   },
-  likeTap: function (e) {
+  likeTap: function(e) {
     var that = this
     var index = e.currentTarget.dataset.index
 
@@ -115,7 +130,7 @@ Page({
 
     that.setData(dataArr)
 
-    api.likeGameBbs(e.currentTarget.dataset.bbsid, function (result) {
+    api.likeGameBbs(e.currentTarget.dataset.bbsid, function(result) {
       if (result.errcode == 1) {
         wx.setStorage({
           key: config.storageKey.gameBbsList,
@@ -123,13 +138,17 @@ Page({
         })
       }
     })
+  },
+  deleteTap: function(e) {
+    var that = this
+    var index = e.currentTarget.dataset.index
   }
 })
 
 function bindData(that, cb) {
   console.log('bindData.....')
 
-  api.getGameBbs(that.data.page, that.data.total, 0, function (data) {
+  api.getGameBbs(that.data.page, that.data.total, 0, function(data) {
     if (data && data.errcode == 1 && data.data && data.data.dataList && data.data.dataList.length > 0) {
       var tempArray = [];
       if (that.data.page > 1) {
@@ -138,9 +157,15 @@ function bindData(that, cb) {
       } else
         tempArray = data.data.dataList
 
-      that.setData({ hasData: true })
-      that.setData({ dataList: tempArray })
-      that.setData({ page: that.data.page + 1 })
+      that.setData({
+        hasData: true
+      })
+      that.setData({
+        dataList: tempArray
+      })
+      that.setData({
+        page: that.data.page + 1
+      })
 
       wx.setStorage({
         key: config.storageKey.gameBbsList,
@@ -149,9 +174,13 @@ function bindData(that, cb) {
 
     } else {
       if (that.data.page == 1) {
-        that.setData({ hasData: false })
+        that.setData({
+          hasData: false
+        })
       }
-      that.setData({ hasMore: false })
+      that.setData({
+        hasMore: false
+      })
 
     }
 

@@ -8,7 +8,7 @@
   <view wx:if="{{dataList.length > 0}}" class='top-box'>
     <view class='order-view'>
       <text class='desc'>按时间</text>
-      <image class='more-img right-img' src='../../../dist/images/icon/gamebbs/more.png' style='width:18px;height:18px;'></image>
+      <image class='more-img right-img' src='../../../dist/images/icon/gamebbs/more.png' style='width:18px;height:18px;' catchtap='deleteTap'></image>
     </view>
   </view>
 

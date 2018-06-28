@@ -27,7 +27,8 @@
     "pages/scancontent/scancontent",
     "pages/discover/gamebbs/gamebbs",
     "pages/discover/gamebbs/addbbs/addbbs",
-    "pages/discover/gamebbs/detail/detail"
+    "pages/discover/gamebbs/detail/detail",
+    "pages/wxauth/wxauth"
   ],
   "tabBar": {
     "color": "#000000",

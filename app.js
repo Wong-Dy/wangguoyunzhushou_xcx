@@ -198,6 +198,12 @@ App({
   },
   getUserInfoFail: function (cb) {
     var that = this
+
+    wx.navigateTo({
+      url: '/pages/wxauth/wxauth',
+    })
+    return
+    
     wx.showModal({
       title: '警告',
       content: '您点击了拒绝授权,将无法正常显示个人信息,点击确定重新获取授权。',

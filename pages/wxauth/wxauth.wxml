@@ -1,0 +1,6 @@
+<!--pages/wxauth/wxauth.wxml-->
+
+<view class='content-box'>
+<button class='submit-btn' open-type="getUserInfo" bindgetuserinfo='bindGetUserInfo'>请先授权微信用户信息</button>
+</view>
+

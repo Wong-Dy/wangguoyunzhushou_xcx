@@ -11,10 +11,21 @@ function hideToast() {
   wx.hideToast()
 }
 
-var defaultDuration = 3000
+var defaultDuration = 2500
 
 module.exports = {
-  show: function (msg, duration,cb) {
+  showb: function (msg, cb) {
+    var duration = 3000
+    showToast({
+      msg: msg,
+      icon: 'success',
+      duration: duration
+    })
+    setTimeout(function () {
+      typeof cb == "function" && cb()
+    }, duration)
+  },
+  show: function (msg, duration) {
     if (typeof duration == 'undefined') {
       duration = defaultDuration
     } else if (duration == 0) {
@@ -22,16 +33,11 @@ module.exports = {
     } else if (duration == -1) {
       duration = 3600000
     }
-
     showToast({
       msg: msg,
       icon: 'success',
       duration: duration
     })
-
-    setTimeout(function(){
-      typeof cb == 'function' && cb()
-    }, duration)
   },
   hide: function () {
     hideToast()
